@@ -96,5 +96,10 @@ public class DataType {
     String str7 = "" + 13 + 13; // 13 -> String "13", result: 1313
     //String str8 = 'A'; // error
 
+    float gg = 10.50001f;
+    System.out.println(gg);
+    double gg1 = 10.50001f;
+    System.out.println(gg1);
+
   }
 }

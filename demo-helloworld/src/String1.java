@@ -2,7 +2,7 @@ public class String1 {
   public static void main(String[] args){
     String str = "I am happy, and good";
     str = str + ".";
-    System.out.println(str); // I am happy, and good.
+    System.out.println("str=" + str); // I am happy, and good.
 
     // Method
     // length()
