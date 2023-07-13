@@ -7,7 +7,8 @@ public class Loops {
 
     int try2 = 40; // can use outside declaration
     for (float i = 3.0f; i >= 0.0000000005; i /= try2) { // initialize; condition; change on i
-      // change expression can only use +=, -=, /=, etc, to calculate other numbers, cannot i=i+2, i+2,
+      // change expression can only use +=, -=, /=, etc, to calculate other numbers,
+      // cannot i=i+2, i+2,
       System.out.println("i=" + i + ", Hello");
       // i = 0, 1st Hello
       // i = 1, 2nd Hello
@@ -85,9 +86,95 @@ public class Loops {
     // }
     // System.out.println(sum);
 
-
-    
-
     // loop用途: 1. 重複做動作, 2. 累積
+
+    // continue
+    for (int i = 0; i < 6; i++) {
+      System.out.println("Hello!");
+      if (i > 3) {
+        continue; // go to the next iteration, i.e. skip below action and go to i+1 loop
+      }
+      System.out.println("Bye!");
+    }
+    // i = 0, hello, bye
+    // i = 2, hello, bye
+    // i = 3, hello, bye
+    // i = 4, hello
+    // i = 5, hello
+    // i = 6, exit
+
+    for (int i = 0; i < 4; i++) {
+      System.out.println("HI");
+      if (i == 2) {
+        continue;
+      }
+      System.out.println("B");
+    }
+
+    for (int i = 0; i < 8; i++) {
+      if (i % 2 == 0) {
+        if (i % 3 == 0) {
+          System.out.println("i=" + i);
+        }
+      }
+    }
+    // if(){if(){action}}, -> if(&&){action} AND
+    // if(){action}else if(){action} -> if(||){action} OR
+    // when the action is the same, the condition shoud merge
+
+    // Nested Loop
+    for (int i = 0; i < 4; i++) {
+      for (int j = 0; j < 3; j++) {
+        System.out.println(i + "," + j);
+      }
+    }
+    // i=0, j=0
+    // i=0, j=1
+    // i=0, j=2
+    // i=0, j=3, exit
+    // i=1, j=0
+    // i=1, j=1
+    // i=1, j=2
+    // i=1, j=3, exit
+    // i=2, j=0
+    // i=2, j=1
+    // i=2, j=2
+    // i=2, j=3, exit
+    // i=3, j=0
+    // i=3, j=1
+    // i=3, j=2
+    // i=3, j=3, exit
+    // i=4, exit
+
+    // System.out.println(); -> nextline after print out
+    // System.out.print(); -> continue after print out, no nextline
+    int numOfStar = 5;
+    for (int i = 0; i < numOfStar; i++) {
+      for (int j = 0; j <= i; j++) {
+        System.out.print("*");
+      }
+      System.out.println(); // ()inside can be nothing, no need ""
+    }
+
+    String try1 = "";
+    for (int i = 0; i < 5; i++) {
+      // for (int j = 0; j <= i; j++) {
+      try1 += "1";
+      // }
+      System.out.println(try1);
+    }
+
+
+
+    for (int i = 0; i < 5; i++) {
+      String try4 = "";
+      for (int j = 0; j <= i; j++) {
+        try4 += "2";
+      }
+      System.out.println(try4);
+    } // when try4 is declared in a block, try4 cannot be used outside that block
+
+
+
   }
 }
