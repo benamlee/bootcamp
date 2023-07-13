@@ -89,6 +89,16 @@ public class Conditionals {
       // if (age >=65){} is also ok but no one know meaning. this condition may appear more than one place and change them is difficult
       System.out.println("yes he is elderly");
     }
+    int try3 = 7;
+    if (try3 > 1) {
+      if (try3 < 6) {
+        System.out.println("good");
+      } else if (try3 == 6) {
+        System.out.println("hi");
+      } else {
+        System.out.println("try3 > 6");
+      }
+    }
 
 
     // switch
@@ -119,6 +129,73 @@ public class Conditionals {
         break;
     }
     System.out.println(dayName);
+
+    int dayOfWeek2 = 3;
+    String dayName2 = "";
+    switch (dayOfWeek2) {
+      case 1:
+        dayName2 = "Monday";
+        System.out.println(1);
+      case 2:
+        dayName2 = "Tuesday";
+        System.out.println(2);
+      case 3:
+        dayName2 = "Wednesday";
+        System.out.println(3);
+      case 4:
+        dayName2 = "Thursday";
+        System.out.println(4);
+      case 5:
+        dayName2 = "Friday";
+        System.out.println(5);
+        break; // stop until here is a break
+      case 6:
+        dayName2 = "Saturday";
+        System.out.println(6);
+      case 7:
+        dayName2 = "Sunday";
+        System.out.println(7);
+    }
+    System.out.println(dayName2);
+
+
+    String try4 = "C";
+    int try41 = 0;
+    switch (try4) {
+      case "A":
+        try41 = 1;
+        System.out.println(try41);
+        break;
+      case "B":
+        try41 = 2;
+        System.out.println(try41);
+        break;
+      default: // if there is no default, and nothing match -> no action
+        System.out.println(try41);
+        break;
+    }
+
+    char grade2 = 'B';
+    int pocketMoney = 0;
+    switch (grade2) {
+      case 'A':
+        pocketMoney += 100;
+        break;
+      case 'B':
+        pocketMoney += 70;
+        break;
+      case 'C':
+        pocketMoney += 20;
+        break;
+      default:
+        pocketMoney += 5;
+        break;
+    }
+    System.out.println(pocketMoney); // cout one time after switch case
+
+    // switch 好處:一眼睇哂有咩case, so no "if, else" inside "switch"
+    // switch 會比較少用,
+    
 
 
   }
