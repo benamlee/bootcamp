@@ -174,6 +174,14 @@ public class Loops {
       System.out.println(try4);
     } // when try4 is declared in a block, try4 cannot be used outside that block
 
+    for (int i = 0; i < 5; i++) {
+      String try4 = "";
+      for (int j = i; j < 5; j++) {
+        try4 += "3";
+      }
+      System.out.println(try4);
+    } // when try4 is declared in a block, try4 cannot be used outside that block, can redeclare inside another block
+
 
 
   }

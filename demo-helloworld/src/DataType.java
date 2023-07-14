@@ -101,5 +101,7 @@ public class DataType {
     double gg1 = 10.50001f;
     System.out.println(gg1);
 
+
+
   }
 }
