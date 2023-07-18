@@ -41,5 +41,8 @@ public class SearchArray {
     int[] try2 = nums2;
     System.out.println(Arrays.toString(try2));
 
+    
+
+
   }
 }
