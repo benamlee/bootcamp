@@ -65,5 +65,12 @@ public class Methods {
     return 3.14159;
   }
 
+  public static int a(int a){
+    return 1;
+  }
+  public static int a(int a, int b){
+    return 1;
+  } // method可以同名，但input不能一樣
+  // method不是同名決定，是用名加input決定
 
 }

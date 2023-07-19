@@ -22,6 +22,11 @@ public class Swap {
     String str6 = "c";
     System.out.println(SwapOddEvenCharacter(str));
 
+    char[] arr2 = new char[] {'f', 'e', 'r', 't'};
+    System.out.println(String.valueOf(arr2));
+
+    int a = Math.abs(-123); // 123
+
   }
 
   // Swap
@@ -48,11 +53,14 @@ public class Swap {
         arr[i] = temp;
       }
     }
-    String str2 = "";
-    for (int i = 0; i < str.length(); i++) {
-      str2 += arr[i];
-    }
-    return str2;
+    // String str2 = "";
+    // for (int i = 0; i < str.length(); i++) {
+    //   str2 += arr[i];
+    // }
+    // return str2;
+    String str1 = String.valueOf(123); // "123"
+    String str2 = String.valueOf(true); // "true"
+    return String.valueOf(arr);
   }
 
 

@@ -12,6 +12,12 @@ public class String1 {
     System.out.println(str.isBlank());
     System.out.println(str2.isBlank());
     System.out.println(str3.isBlank());
+    String[] str4 = new String[2];
+    System.out.println(str4[0]);
+    System.out.println(str4[1]);
+    String str5 = null;
+    System.out.println(str5.isBlank());
+
 
     // toLowerCase(), toUpperCase()
     System.out.println(str.toUpperCase()); // HELLO, it dont save str
@@ -45,8 +51,8 @@ public class String1 {
 
     str = str.toUpperCase();
     System.out.println(str); // HELLO
-str+=str.toLowerCase();
-System.out.println(str); // HELLOhello
+    str += str.toLowerCase();
+    System.out.println(str); // HELLOhello
 
   }
 }

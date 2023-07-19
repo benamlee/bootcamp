@@ -9,7 +9,7 @@ public class Primitives {
     long l = i;
     float f = l;
     double d = f;
-    // char -> int
+    // char -> int // ASCII 讀ask ki
     char c = 'A';
     int j = c;
 
@@ -73,10 +73,11 @@ public class Primitives {
     if (character == 98) {
       System.out.println("character=" + character);
     }
-    if (character > 'a') {
+    if (character > 'a') { // ASCII
       System.out.println("character>a");
     }
 
+    String
 
 
   }

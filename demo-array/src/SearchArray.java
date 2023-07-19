@@ -19,6 +19,10 @@ public class SearchArray {
     System.out.println(Arrays.toString(arr));
     // [I, , a, m, , a, , b, o, y, .]
 
+    int[] arr2 = new int[] {0, 2, 4, 5, 6, 2};
+    String aaaa = Arrays.toString(arr2);
+    System.out.println(aaaa);
+
     // Find Max. value in the array
     int[] nums = new int[] {240, 800, -23, 6, 3};
     int max = 0; // not perfect, cos if negative
@@ -41,7 +45,6 @@ public class SearchArray {
     int[] try2 = nums2;
     System.out.println(Arrays.toString(try2));
 
-    
 
 
   }
