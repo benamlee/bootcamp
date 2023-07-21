@@ -11,17 +11,33 @@ public class InsertionSort {
 
     int[] arr = new int[] {5, 1, 4, 8, 2};
     System.out.println(Arrays.toString(sort(arr)));
+    System.out.println(Arrays.toString(sort2(arr)));
+
   }
 
   public static int[] sort(int[] arr) {
     int temp = 0;
-    for (int i = 1; i < arr.length ; i++) {
-      for (int j = i ; j > 0; j--) {
+    for (int i = 1; i < arr.length; i++) {
+      for (int j = i; j > 0; j--) {
         if (arr[j] < arr[j - 1]) {
           temp = arr[j - 1];
           arr[j - 1] = arr[j];
           arr[j] = temp;
         }
+      }
+    }
+    return arr;
+  }
+
+  public static int[] sort2(int[] arr) {
+    int temp = 0;
+    for (int i = 1; i < arr.length; i++) {
+      int j = i;
+      while (arr[j] < arr[j - 1]) {
+        temp = arr[j - 1];
+        arr[j - 1] = arr[j];
+        arr[j] = temp;
+        j--;
       }
     }
     return arr;

@@ -25,9 +25,14 @@ public class Game {
       System.out.println("Please input an number (" + min + "-" + max + "):");
       scanner = new Scanner(System.in);
       input = scanner.nextInt();
+      if (input < min || input > max) {
+        continue;
+      }
       if (input < bomb) {
         min = input + 1;
-      } else {
+      } else if (input > bomb) {
+        // 如果input=bomb，唔寫else if會有人challenge，所以為了readibility要寫得平衡
+        // 雖然呢個位就咁else都OK
         max = input - 1;
       }
     } while (input != bomb); // true 繼續行，false先停
