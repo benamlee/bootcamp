@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class InsertionSort {
-  public static void main(String[] args) {
+  public static void main(String[] args) { // compare from left, smallest, use while loop can stop earlier
     // [5, 1, 4, 8, 2]
     // Step1.1: [1, 5, 4, 8, 2] (insert 1 to arr[0], 1 < 5)
     // After round 1, [1, 5] is sorted

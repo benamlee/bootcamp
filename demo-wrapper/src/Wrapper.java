@@ -15,7 +15,7 @@ public class Wrapper { // Class
 
     }
     if (isFemale.compareTo(isMale) == 0) { // asking if isFemale with the same value of isMale
-
+      // Boolean可以.compareTo；boolean唔得
     }
     isFemale = null; // true/ flase/ null
     // isMale = null; // cannot

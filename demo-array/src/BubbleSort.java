@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class BubbleSort {
+public class BubbleSort { // each time put the largest num to the right
   public static void main(String[] args) {
     // [5, 1, 4, 2, 8]
     // Step1.1: [1, 5, 4, 8, 2]
