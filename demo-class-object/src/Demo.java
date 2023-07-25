@@ -56,12 +56,21 @@ public class Demo {
     carFactory.changeColor(car3, "white"); // carFactory 有個獨有 method 改 car
     System.out.println(car3.getColor());
 
-    Car car5= new Car(1,2, "a");
-    Car car6=car5; // car6 指住 car5 地址，改緊用一個 object
+    Car car5 = new Car(1, 2, "a");
+    Car car6 = car5; // car6 指住 car5 地址，改緊用一個 object
     car5.setCapacity(10);
     car6.setNoOfWheel(20);
     System.out.println(car6.getCapacity());
     System.out.println(car5.getNoOfWheel());
+
+
+    person.setAge(30);
+    // System.out.println(person.age); // set private
+    System.out.println(person.getAge());
+
+
+    Student student = new Student("Ben","Lee", 100);
+    System.out.println(student.fullName());
 
 
   }

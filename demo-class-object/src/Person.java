@@ -1,7 +1,7 @@
 public class Person { // template 模，這是一個工廠去生產Person
   // Describe the Person by attributes 形容詞/屬性
-  int age;
-  char gender;
+  private int age;
+  private char gender;
   String name;
   // ...每個新Person有什麼形容詞
 
