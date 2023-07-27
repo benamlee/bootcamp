@@ -16,7 +16,7 @@ public class String1 {
     System.out.println(str4[0]);
     System.out.println(str4[1]);
     String str5 = null;
-    System.out.println(str5.isBlank());
+    // System.out.println(str5.isBlank());
 
 
     // toLowerCase(), toUpperCase()
@@ -36,6 +36,7 @@ public class String1 {
     System.out.println(str.substring(0, 5)); // hello
     System.out.println(str.substring(0)); // hello
     System.out.println(str.substring(3)); // lo
+     System.out.println(str.substring(2,2)); // lo
     if (str.substring(3).equals("lo")) { // remember again, string use .equals, not ==
       System.out.println("yes, str.substring(3) = lo");
     }

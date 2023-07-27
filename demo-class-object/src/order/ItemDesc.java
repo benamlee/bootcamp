@@ -18,9 +18,10 @@ public class ItemDesc {
     Transaction t2 = new Transaction(1, itemB, 4, 20.5d);
     Order order = new Order(new Transaction[] {t, t2});
 
-    
+
     System.out.println(Arrays.toString(order.getSubtotal()));
-    System.out.println(order.getTotal());
+    System.out.println(order.getTotal()); // my try
+    System.out.println(order.total()); // vincent clear expression
 
 
   }

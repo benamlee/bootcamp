@@ -77,8 +77,6 @@ public class Primitives {
       System.out.println("character>a");
     }
 
-    String
-
 
   }
 }

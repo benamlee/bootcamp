@@ -5,6 +5,7 @@ public class Transaction {
   private ItemDesc itemDesc;
   private int quantity;
   private double unitPrice;
+  // private double discount;
 
   public Transaction(int itemNo, ItemDesc itemDesc, int quantity,
       double unitPrice) {
@@ -44,6 +45,10 @@ public class Transaction {
 
   public double getUnitPrice() {
     return this.unitPrice;
+  }
+
+  public double subtotal(){ // modern writting, dont use "get..."
+    return this.quantity*this.unitPrice;
   }
 
 

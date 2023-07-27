@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class App {
+public class StringBuilder1 {
     public static void main(String[] args) {
         StringBuilder s = new StringBuilder("start"); // Constructor
         // s -> address (reference)
@@ -15,6 +15,7 @@ public class App {
 
         String str = "  he llo ";
         String[] strs = str.trim().replace('h', 'e').split(" ");
+        
         System.out.println(strs.length);
         System.out.println(Arrays.toString(strs)); // [ee, llo]
 

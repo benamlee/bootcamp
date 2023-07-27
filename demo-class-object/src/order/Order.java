@@ -25,6 +25,14 @@ public class Order {
     }
     return total;
   }
+  // 用我的double[] getSubtotal()
 
+  public double total() {
+    double total = 0;
+    for (int i = 0; i < this.transactions.length; i++) {
+      total += this.transactions[i].subtotal();
+    }
+    return total;
+  }
 
 }

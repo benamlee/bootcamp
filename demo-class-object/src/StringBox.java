@@ -36,6 +36,16 @@ public class StringBox { // Class
     return this.string;
   }
 
+  public char[] toCharArray() {
+    char[] arr = new char[this.string.length()];
+    for (int i = 0; i < arr.length; i++) {
+      arr[i] = this.string.charAt(i);
+    }
+    return arr;
+  }
+
+
+
   /**
    * 
    * @param idx Range
@@ -78,9 +88,9 @@ public class StringBox { // Class
     }
 
     String s3 = StringBox.append("hello", "woo").toString(); // 這 class 的 static method 做一個 StringBox 去用 .toString()
-    System.out.println(s3);
+    System.out.println(s3); // StringBox.append("hello", "woo") 出一個 StringBox type
 
-    //pass by value
+    // pass by value
     String s1 = "a";
     String s2 = s1;
     System.out.println(s2);
@@ -92,6 +102,10 @@ public class StringBox { // Class
     System.out.println(Arrays.toString(arr2));
     arr1[0] = 'b';
     System.out.println(Arrays.toString(arr2));
+
+    System.out.println(Arrays.toString(s.toCharArray()));
+
+
   }
 
 
