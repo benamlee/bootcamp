@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class Try {
+
   public static void main(String[] args) {
     String str = "1233";
     int i = 968675;
@@ -43,7 +44,9 @@ public class Try {
     System.out.println(s.replace('a', 'b'));
     System.out.println(s); // replace dont change itself
 
-
+    StringBuilder ssss = new StringBuilder("abc");
+    char asd = ssss.append("null").charAt(1);
+    System.out.println(ssss);
 
 
   }

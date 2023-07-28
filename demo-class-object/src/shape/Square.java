@@ -1,7 +1,11 @@
 package shape;
 
 public class Square {
-  private Edge[] edges; // instance variable
+
+  private static int edgeCounter;
+  private Edge[] edges; // instance variable // edges is array name // element is Edge class
+  // private final Edge[] edges; // final Edge[] 唔比改array地址
+
   // Edge Class Type 的 Array -> Array , each element is Edge Class Type
 
   // public Square() {
@@ -12,38 +16,74 @@ public class Square {
   // edges[3] = new Edge(3.0d, "BLUE");
   // }
 
-  public Square(double length) {
+  private Square(double length) {
     if (length <= 0.0)
       length = 1.0d;
-    edges = new Edge[4];
-    edges[0] = new Edge(length, "RED");
-    edges[1] = new Edge(length, "RED");
-    edges[2] = new Edge(length, "RED");
-    edges[3] = new Edge(length, "RED");
+    int id = 0;
+    this.edges = new Edge[4]; // assign address
+    this.edges[0] = new Edge(++id, length, "RED");
+    this.edges[1] = new Edge(++id, length, "RED");
+    this.edges[2] = new Edge(++id, length, "RED");
+    this.edges[3] = new Edge(++id, length, "RED");
+    // Square.resetId();; // class.staticmethod
   }
+
+public static Square of(double length){
+  return new Square(length);
+}
+
+public static Square of(int length){
+  return new Square(length);
+}
+
+public static Square of(float length){
+  return new Square(length);
+}
+
+public static Square of(String length){
+  return new Square(Double.valueOf(length));
+}
 
   // public void setLength(double length) {
   // this.edges[0].length = length;
   // }
 
-  public Edge[] getEdges() {
+  // public static void resetId() { // static 屬於class , 不屬於 object
+  // edgeCounter = 0;
+  // }
+
+  public Edge getEdge(int edgeId) {
+    return this.edges[edgeId - 1];
+  }
+
+
+  private Edge[] getEdges() { // private edges array address
     return this.edges;
   }
 
+  // public void setEdges(Edge[] edges){
+  // this.edges=edges;
+  // }
+  // if -> private final Edge[] edges; -> the address cannot be reassigned
 
-  public static void main(String[] args) {
-    // Square s = new Square(2);
-    // Square s2 = new Square(10);
-    // System.out.println(s.length);
-    // s.length=5.0d; // cannot change final
-    // System.out.println(s.length.toString()); // 溫習 Wrapper Class 可以 .method
-    Square s3 = new Square(5);
-    // System.out.println(s3.edges[0].length);
-    // s3.setLength(100);
-    // System.out.println(s3.edges[0].length);
-
-    s3.getEdges()[0].setColor("YELLOW");
-    System.out.println(s3.getEdges()[0].getColor());
-
+  public void modify(double length) {
+    this.getEdges()[0].setLength(length);
+    this.getEdges()[1].setLength(length);
+    this.getEdges()[2].setLength(length);
+    this.getEdges()[3].setLength(length);
   }
+
+  public void modify(String color) {
+    this.getEdges()[0].setColor(color);
+    this.getEdges()[1].setColor(color);
+    this.getEdges()[2].setColor(color);
+    this.getEdges()[3].setColor(color);
+  }
+
+  public void modify(int edgeId, String color) {
+    this.getEdge(edgeId).setColor(color);
+  }
+
+
+
 }
