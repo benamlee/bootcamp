@@ -46,6 +46,7 @@ public class StringBuilder1 {
         s11.setCharAt(4,'J'); // void
         System.out.println(s11.toString()); // wordJel loworld
 
+        // StringBuilder s13="hi"; // compile error
 
     }
 }
