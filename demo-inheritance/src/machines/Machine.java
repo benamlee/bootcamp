@@ -1,4 +1,4 @@
-package multilevel;
+package machines;
 import javax.crypto.Mac;
 // abstract -> 只比人地 extends (deleted)
 public class Machine { 
@@ -51,7 +51,10 @@ public class Machine {
     Machine machine1 = Machine.produce(1); // Machine
     machine1.stop(); // Machine stop ...
     Machine machine2 = Machine.produce(2); // Laptop
-    machine2.stop(); // Laptop Stop ...
+    machine2.stop(); // Laptop Stop ... ，用 override method
+    // machine2.mute(); // 唔等於可以用 Laptop method
+    Machine laptoptry = new Laptop(); // 簡單示範
+    // Laptop machinetry = new Machine(); // Type mismatch: cannot convert from Machine to Laptop
 
     int pocketMoney = 100;
     boolean stopCondition = pocketMoney < 0;

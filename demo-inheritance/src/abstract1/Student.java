@@ -19,7 +19,9 @@ public Student(){
     student.read();
     student.run();
     student.eat();
-
+    // Person p=new Person(); // abstract class cannot be new
+    // Adult ad=new Adult(); 
+    
     System.out.println(student.getAge()); // 0
   }
 

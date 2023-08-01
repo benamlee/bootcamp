@@ -47,6 +47,8 @@ public class DoubleProblem {
 
     System.out.println(b4.multiply(b4));
 
+    double b5 = b4.doubleValue(); // turn
+    System.out.println(b5);
 
   }
 }

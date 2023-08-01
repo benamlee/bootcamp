@@ -1,4 +1,4 @@
-package multilevel;
+package machines;
 
 public class Laptop extends Machine { // Accepting Laptop is a kind of Machine
   // extends -> 在Machine的基礎上再形容Laptop
@@ -51,7 +51,7 @@ public class Laptop extends Machine { // Accepting Laptop is a kind of Machine
     System.out.println("Laptop Stop ...");
   }
 
-  // public static String staticMethod(String x, String y){ } // cannot be override a "final" method
+  // public static String staticMethod(String x, String y){ } // cannot override a "final" method in superclass
 
   public void mute() {
     this.volume = 0;

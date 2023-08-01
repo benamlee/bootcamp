@@ -1,7 +1,7 @@
 
 
 // "final Class" means cannot be extends -> no "final abstract"
-public abstract class Person { // abstract -> means cannot be new Person()
+public abstract class Person { // abstract -> means cannot be new Person() 不想被人new
   
 private int age;
 
@@ -23,7 +23,7 @@ public void run(){
 }
 
 // May contain abstract method (without implementation)
-public abstract void sleep();
+public abstract void sleep(); // childclass有各自的defination，呢度唔寫最後都要寫
 
 
 }
