@@ -4,7 +4,7 @@ public abstract class Adult extends Person { // abstract -> means cannot be new 
   // implicitly "extends" abstract method
 
 
-  public Adult(){
+  public Adult() {
     super(); // new Person()
   }
 

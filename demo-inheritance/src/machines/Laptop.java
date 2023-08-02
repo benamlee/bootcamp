@@ -1,5 +1,7 @@
 package machines;
 
+import java.util.Objects;
+
 public class Laptop extends Machine { // Accepting Laptop is a kind of Machine
   // extends -> 在Machine的基礎上再形容Laptop
   // Laptop is subclass (childclass), Machine is superclass (parentclass)
@@ -8,7 +10,6 @@ public class Laptop extends Machine { // Accepting Laptop is a kind of Machine
 
   private Keyboard keyboard;
   private Monitor monitor; // 形容詞 -> 組成部分
-
   private int volume;
 
   // subclass must call superclass constructor
@@ -52,6 +53,18 @@ public class Laptop extends Machine { // Accepting Laptop is a kind of Machine
   }
 
   // public static String staticMethod(String x, String y){ } // cannot override a "final" method in superclass
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (!(o instanceof Laptop))
+      return false;
+    Laptop laptop = (Laptop) o;
+    return Objects.equals(laptop.keyboard, this.keyboard)
+        && Objects.equals(laptop.monitor, this.monitor)
+        && Objects.equals(laptop.volume, this.volume);
+  }
 
   public void mute() {
     this.volume = 0;
