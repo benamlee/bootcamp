@@ -38,7 +38,6 @@ public class InsertionSort {
         arr[j - 1] = arr[j];
         arr[j] = temp;
         j--;
-        System.out.println(j);
       }
     }
     return arr;

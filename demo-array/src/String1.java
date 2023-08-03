@@ -36,7 +36,8 @@ public class String1 {
     System.out.println(str.substring(0, 5)); // hello
     System.out.println(str.substring(0)); // hello
     System.out.println(str.substring(3)); // lo
-     System.out.println(str.substring(2,2)); // lo
+    System.out.println(str.substring(0, 1)); // h
+    System.out.println(str.substring(0, 1)+str.substring(2, 5));
     if (str.substring(3).equals("lo")) { // remember again, string use .equals, not ==
       System.out.println("yes, str.substring(3) = lo");
     }

@@ -49,6 +49,11 @@ public abstract class GameMember {
     System.out.println(dog.getScore()); // 2+3=5
     System.out.println(cat.getScore()); // 1+4=5
 
+    Move try2=new Dog(); // Dog implements Move
+    Move try3=new Cat(); // Cat implements Move
+    BigMove try4 = new Dog(); // Move extends BigMove
+
+
     // Interface Move default instance method
     dog.print();
     cat.print();
