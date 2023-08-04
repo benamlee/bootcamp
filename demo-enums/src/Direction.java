@@ -1,6 +1,6 @@
 public enum Direction { // special keyword since Java 1.5
-// 1. public class Direction extends Enum (Direction cannot extends anymore)
-// 2. enum is final class
+  // 1. public class Direction extends Enum (Direction cannot extends anymore)
+  // 2. enum is final class
 
   // 全局唯一, 4 objects (EAST, SOUTH, WEST, NORTH)
   // new Direction("EAST")
@@ -29,5 +29,16 @@ public enum Direction { // special keyword since Java 1.5
   // public void setDirection(char direction){
   // this.direction=direction;
   // } // 做到但唔應該改寫element，會整死成個用家
+
+  public boolean isOpposite(Direction direction) {
+    return Math.abs(this.degree - direction.getDegree()) == 180;
+  }
+
+  public static void main(String[] args) {
+    System.out.println(Direction.EAST.isOpposite(Direction.WEST)); // true
+    System.out.println(Direction.WEST.isOpposite(Direction.EAST)); // true
+    System.out.println(Direction.NORTH.isOpposite(Direction.EAST)); // false
+
+  }
 
 }

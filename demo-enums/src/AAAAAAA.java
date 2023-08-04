@@ -11,6 +11,8 @@ public class AAAAAAA {
         System.out.println(Direction.EAST.name()); // EAST , default 有 .name()
 
         Direction east = Direction.EAST;
+        Direction east2 = Direction.EAST;
+        System.out.println((east==east2)+" try");
         System.out.println(east == Direction.NORTH); // false
         System.out.println(east != Direction.NORTH); // false
         // == and != are checking the object reference

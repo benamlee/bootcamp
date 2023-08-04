@@ -1,5 +1,6 @@
 package tryabstractinterface;
 
-public class DD {
+public interface DD {
+  void m1();
   
 }

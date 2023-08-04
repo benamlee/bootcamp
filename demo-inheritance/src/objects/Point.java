@@ -51,10 +51,10 @@ public class Point {
     long l2 = 4200000000L;
     System.out.println(l1 == l2);
 
-    Long l = 1L;
+    Long l = 1L; // Long = Long.valueOf(1L); 原本要咁寫
     int i = 1;
     // l, unbox Long -> primitive long
-    System.out.println((l == i) + " unbox & auto box"); // true, finnally long vs int
+    System.out.println((l == i) + " auto box & unbox "); // true, finnally long vs int
     // not the same TYPE
     // i, auto-box -> Integer, Object -> Integer 裝住 int
     System.out.println(Objects.equals(l, i) + " use Objects.equals()"); // false, this is a big bug

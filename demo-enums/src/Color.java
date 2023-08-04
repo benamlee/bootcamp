@@ -7,8 +7,10 @@ public enum Color {
 
   private String hexCode;
 
+
   private Color(String str) {
     this.hexCode = hexCode;
+
   }
 
   public String getHexCode() {
