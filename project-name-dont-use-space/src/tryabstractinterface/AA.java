@@ -87,8 +87,12 @@ public class AA extends BB {
 
     System.out.println(aa.rr);
 
-
-
+int a;
+String avs="5";
+a=Integer.valueOf(avs);
+System.out.println(a);
+a=(int)Math.pow(a, 2);
+System.out.println(a);
   }
 
   public static void fff() {}

@@ -23,21 +23,21 @@ public class Integer3 {
 
     Short s1 = 128;
     Short s2 = 128;
-    System.out.println(s1 == s2);
+    System.out.println(s1 == s2); // false
 
     Short s3 = 127;
     Short s4 = 127;
-    System.out.println(s3 == s4);
+    System.out.println(s3 == s4); // true
 
     System.out.println();
 
     Long l1 = 128L;
     Long l2 = 128L;
-    System.out.println(s1 == s2);
+    System.out.println(s1 == s2); // false
 
     Long l3 = 127L;
     Long l4 = 127L;
-    System.out.println(s3 == s4);
+    System.out.println(s3 == s4); // true
     // Byte, Short, Integer, Long 都係用相同的 Internal Cache
 
     // No Internal Cache for Double and Float
@@ -53,20 +53,20 @@ public class Integer3 {
     // Internal Cache -> ASCII
     Character c1 = 'a';
     Character c2 = 'a';
-    System.out.println(c1 == c2);
+    System.out.println(c1 == c2); // true
     Character c3 = 'Ϩ'; // 'Ϩ' is 1000 in ASCII
     Character c4 = 'Ϩ';
-    System.out.println(c3 == c4);
+    System.out.println(c3 == c4); // false
 
     System.out.println();
 
     Integer i10 = Integer.valueOf(127); // 127 仍然指同一個位
     Integer i11 = 127;
-    System.out.println(i10 == i11);
+    System.out.println(i10 == i11); // true
 
     Integer i12 = Integer.valueOf(128); // 128 指新位置
     Integer i13 = 128;
-    System.out.println(i12 == i13);
+    System.out.println(i12 == i13); // false
 
 
   }
