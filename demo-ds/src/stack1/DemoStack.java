@@ -9,7 +9,7 @@ public class DemoStack {
     stack1.push("abc");
     stack1.push("def");
     System.out.println(stack1.pop()); // def
-
+    System.out.println(stack1.get(0));
     System.out.println();
 
     stack1.push("xyz");
@@ -21,9 +21,9 @@ public class DemoStack {
     System.out.println();
 
     // stack
-    stack1.add("ijk");
-    stack1.push("fgi");
-    stack1.add("ijk");
+    System.out.println(stack1.add("ijk"));
+    System.out.println(stack1.push("fgi"));
+    stack1.add("ijk33");
     System.out.println(stack1.pop());
 
   }

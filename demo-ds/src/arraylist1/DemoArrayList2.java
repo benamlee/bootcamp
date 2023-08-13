@@ -1,4 +1,5 @@
 package arraylist1;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -51,11 +52,11 @@ public class DemoArrayList2 {
     System.out.println(stringList.getClass().getName());
     System.out.println(strs.getClass().getName());
 
-
     // Read & Write (Solution)
     List<String> stringList2 = new ArrayList<>(Arrays.asList(strings));
     stringList2.add("ijk");
     System.out.println(stringList2);
+    System.out.println(stringList2.getClass().getName());
 
     System.out.println(strs.toString());
 

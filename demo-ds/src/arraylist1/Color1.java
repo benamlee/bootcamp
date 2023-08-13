@@ -15,8 +15,8 @@ public enum Color1 {
   }
 
   public static Color1 getColor1(int id) {
-    if (id < 0 || id > 2)
-      return null;
+    // if (id < 0 || id > 2)
+    //   return null; //dummy code
     switch (id) {
       case 0:
         return Color1.RED;

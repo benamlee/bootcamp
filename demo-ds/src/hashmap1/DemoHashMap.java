@@ -50,6 +50,6 @@ public class DemoHashMap {
     System.out.println("2 " + map.remove("abc")); // remove and return "hello world !!!"
     System.out.println(map.remove("bcd", "I am worker")); // false
     System.out.println(map.remove("bcd", "I am Developer")); // true
-
+    System.out.println(map.remove("asasd"));
   }
 }

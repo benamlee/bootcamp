@@ -5,7 +5,7 @@ public class Pocket {
 
   ArrayList<Ball> balls; // attribute
 
-  public Pocket() {
+  public Pocket() { // 唔係extends 所以要new ,否則default 係null 
     this.balls = new ArrayList<>(); // = new X() 係比緊一個「地址」，製造一支針 (null=冇針)
   }
 
@@ -33,7 +33,7 @@ public class Pocket {
       if (b.getId() == ballId) // primitives ==
         this.balls.remove(b);
       return; // remove the first one and return
-    }
+    } // 如果唔打retrun會所有重複波都remove
   }
 
   public int getSize() {
@@ -44,7 +44,7 @@ public class Pocket {
   public String toString() {
     StringBuilder sb = new StringBuilder("[");
     for (Ball b : this.balls) {
-      sb.append(b.toString());
+      sb.append(b.toString()); // b is Ball class 有 override .toSting()
       sb.append(",");
     }
     return sb.append("]").toString();

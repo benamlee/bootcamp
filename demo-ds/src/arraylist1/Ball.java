@@ -8,7 +8,7 @@ public class Ball {
   
   private static int idCounter = 0;
 
-  public Ball(Color1 color) {
+  public Ball(Color1 color) { // 有input color
     this.id = idCounter++;
     this.color = color;
   }

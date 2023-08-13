@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class DemoQueue {
   public static void main(String[] args) {
-    LinkedList<String> queue = new LinkedList<>(); // 有排隊的 list
+    Queue<String> queue = new LinkedList<>(); // 有排隊的 list
     // First In First Out
     queue.add("hello");
     queue.add("world");
@@ -38,7 +38,7 @@ public class DemoQueue {
       System.out.println(str); // this for loop not guarantee the order!!
     }
 
-    LinkedList<String> backup = queue;
+    Queue<String> backup = queue;
 
     while (!queue.isEmpty()) {
       System.out.println(queue.poll()); // this loop poll guarantee the order
@@ -69,7 +69,7 @@ public class DemoQueue {
     // }
     // queueNum.add(queueNum.poll());
     // }
- 
+
     // vincent template
     System.out.println();
     int count = 0;
@@ -90,5 +90,12 @@ public class DemoQueue {
       System.out.println(queueNum.poll());
     }
 
+    PriorityQueue<Integer> aaa = new PriorityQueue<>();
+    aaa.add(5);
+    aaa.add(5);
+    aaa.add(10);
+    aaa.add(-4);
+    System.out.println(aaa.peek());
+    
   }
 }

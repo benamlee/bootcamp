@@ -36,7 +36,7 @@ public class DemoHashMap2 {
     booklist2.add(new Book("dummy", "Book3")); // 一本
     booklist2.add(new Book("dummy", "Book4")); // 兩本
     // new 哂之後放入去
-    bookMap2.put(author1, booklist1);
+    bookMap2.put(author1, booklist1); // 呢一步先將author & booklist相連
     bookMap2.put(author2, booklist2); // 作者一樣，override booklist2
     System.out.println(bookMap2.size()); // 1 ，一個作者
 

@@ -1,4 +1,5 @@
 package arraylist1;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -31,15 +32,17 @@ public class DemoArrayList {
     // Conversion, ArrayList -> Array
     Integer[] arr2 = new Integer[numbers.size()];
     // Define output array type for toArray() perform conversion
+    Integer[] arr3 = numbers2.toArray(new Integer[0]);
+    System.out.println(Arrays.toString(arr3));
     arr2 = numbers2.toArray(arr2);
-    System.out.println(Arrays.toString(arr2)); // [1, 2, 3, 4]
-
+    System.out.println(Arrays.toString(arr2) + "here"); // [1, 2, 3, 4, null]
     // ArrayList<int>, not support primitive
 
     // Access elements in ArrayList
     for (int i = 0; i < numbers2.size(); i++) {
-      System.out.println(numbers2.get(i)); // Posible to have IndexOutOfBound
+      System.out.println(numbers2.get(i)); // IndexOutOfBound -> error
     }
+    // System.out.println(numbers2.get(100));
 
     int original = numbers2.set(2, 100); // unbox , replace the element but return the previous element
     System.out.println("original=" + original); // 3

@@ -33,6 +33,8 @@ public class DemoHashSet2 {
 
     bytes.clear();
     bytes2.clear();
+    bytes.add(bytes(5));
+    bytes2.add(bytes(5));
     System.out.println(bytes.size());
     System.out.println(bytes2.size());
     System.out.println(bytes.equals(bytes2)); // true
