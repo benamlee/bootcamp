@@ -5,7 +5,7 @@ import java.util.Currency;
 public class AA extends BB {
   // public class AA extends BB { // now BB class 繼承了 CC
 
-  final int a;
+   int a;
   static int rr = 35;
 
   public AA(int a) {

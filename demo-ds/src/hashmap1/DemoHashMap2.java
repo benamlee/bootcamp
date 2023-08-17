@@ -18,7 +18,7 @@ public class DemoHashMap2 {
     HashMap<Author, Book> bookMap = new HashMap<>();
     // Author unique key? -> equals(), hashCode()
     Author author1 = new Author("John", 30);
-    Author author2 = new Author("John", 29);
+    Author author2 = new Author("John1", 29);
     bookMap.put(author1, new Book("dummy", "Book3"));
     bookMap.put(author2, new Book("dummy", "Book4")); // Author override name only -> same name same author
     System.out.println(bookMap.size()); // 1

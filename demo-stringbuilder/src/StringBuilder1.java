@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class StringBuilder1 {
+public class StringBuilder1 { // 改 String 在 memory會好慢，用StringBuilder會快好多
     public static void main(String[] args) {
         StringBuilder s = new StringBuilder("start"); // Constructor
         // s -> address (reference)

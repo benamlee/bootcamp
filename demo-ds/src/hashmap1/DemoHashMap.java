@@ -51,5 +51,6 @@ public class DemoHashMap {
     System.out.println(map.remove("bcd", "I am worker")); // false
     System.out.println(map.remove("bcd", "I am Developer")); // true
     System.out.println(map.remove("asasd"));
+    System.out.println(map.get("bcd"));
   }
 }

@@ -1,4 +1,7 @@
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class Try {
 
@@ -48,6 +51,25 @@ public class Try {
     char asd = ssss.append("null").charAt(1);
     System.out.println(ssss);
 
+    int[] aa = new int[] {1, 2, 3};
+    Queue<Integer> na = new LinkedList(Arrays.asList(aa));
+    System.out.println(na);
 
+    List<Integer> aaa = Arrays.asList(new Integer[] {1, 2, 3}); // from array to list
+    List<Integer> aaa2 = Arrays.asList(1, 2, 3, 4);
+    List<String> sss = Arrays.asList("a", "f");
+
+    System.out.println(sss); // print list
+
+    Integer ab=5;
+    byte cccc= (byte)(ab+4);
+    System.out.println(cccc);
+
+    LinkedList<Integer> asds= new LinkedList<>();
+    asds.addLast(1);
+    asds.addLast(2);
+    asds.addLast(3);
+    System.out.println(asds);
+ 
   }
 }

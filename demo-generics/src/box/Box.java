@@ -6,7 +6,7 @@ public class Box<T extends Number> { // compile-time check
   private ArrayList<T> numbers;
 
   private Box() {
-    numbers = new ArrayList<>();
+    numbers = new ArrayList<>(); // new Box, have to new object(ArrayList), otherwise numbers is null, just name without object
   }
 
   public Box(T number) {
@@ -37,6 +37,7 @@ public class Box<T extends Number> { // compile-time check
     Box<Integer> box1 = new Box<>(100);
     System.out.println(box1.size()); // 1
 
+    // box1 = new Box<>("abc"); // new Box<>("abc") is not Box<Number>
 
   }
 
