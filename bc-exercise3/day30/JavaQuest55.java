@@ -27,6 +27,10 @@ Constraints:
 nums.length == 2 * n
 1 <= n <= 500
 1 <= nums[i] <= 500 */
+
+import java.util.LinkedList;
+import java.util.List;
+
 public class JavaQuest55 {
   public static void main(String[] args) {
     System.out.println(divideArray(new int[] { 3, 2, 3, 2, 2, 2 }));// true
@@ -36,6 +40,14 @@ public class JavaQuest55 {
   }
 
   public static boolean divideArray(int[] nums) {
+    List<Integer> numlist = new LinkedList<>();
+    for (int i : nums) {
+      if (!numlist.contains(i))
+        numlist.add(i);
+      else
+        numlist.remove(numlist.indexOf(i));
+    }
+    return numlist.isEmpty();
   }
 
 }

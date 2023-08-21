@@ -32,5 +32,11 @@ public class JavaQuest52 {
   }
 
   public static boolean isPowerOfFour(int n) {
+    // return Math.log(n)/Math.log(4) % 1 == 0;
+    if (n != 0 && n % 4 == 0)
+    return isPowerOfFour(n / 4);
+    if (n == 1)
+    return true;
+    return false;
   }
 }

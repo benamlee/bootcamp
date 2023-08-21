@@ -33,6 +33,16 @@ public class JavaQuest53 {
   }
 
   public static int maxProduct(int[] nums) {
+    int max = nums[0];
+    int secMax = nums[0];
+    for (int n : nums) {
+      // System.out.println(n);
+      if (n >= max) {
+        secMax = max;
+        max = n;
+      }
+    }
+    return (max - 1) * (secMax - 1);
   }
 
 }

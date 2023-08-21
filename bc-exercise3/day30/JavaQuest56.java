@@ -34,6 +34,11 @@ Constraints:
 1 <= nums.length <= 100
 0 <= nums[i] <= 100
  */
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 public class JavaQuest56 {
   public static void main(String[] args) {
     System.out.println(numberOfPairs(new int[] { 1, 3, 2, 1, 3, 2, 2 }));// [3,1]
@@ -43,5 +48,18 @@ public class JavaQuest56 {
   }
 
   public static int[] numberOfPairs(int[] nums) {
+    List<Integer> numlist = new LinkedList<>();
+    int count = 0;
+    for (int i : nums) {
+      if (!numlist.contains(i))
+        numlist.add(i);
+      else {
+        numlist.remove(numlist.indexOf(i));
+        count++;
+      }
+    }
+    System.out.println(Arrays.toString(new int[]{count, numlist.size()}));
+    return new int[]{count, numlist.size()};
+
   }
 }

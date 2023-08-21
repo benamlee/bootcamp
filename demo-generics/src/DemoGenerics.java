@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.List;
 import box.Box;
+import person.Person;
 import zoo.Animal;
 import zoo.Cat;
 import zoo.Dog;
@@ -29,6 +31,11 @@ public class DemoGenerics {
     for (double d : d1.getNumbers()) {
       System.out.println(d); // 1.0
     }
+
+    List<Person> strings3 = new ArrayList<>();
+    Revision<Integer> string4 = new Revision<>();
+
+    Revision.add(new Person()); // call static method, no restritions on T
   }
 
   public static <T extends Number> Box<T> getBox(T element) {

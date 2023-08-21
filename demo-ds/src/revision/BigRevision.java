@@ -32,7 +32,7 @@ public class BigRevision {
     Queue<String> linkedQueue = new LinkedList<>(); // linked list
     linkedQueue.add("a");
     linkedQueue.poll();
-
+    
     Queue<String> pQueue = new PriorityQueue<>(); // Array
     pQueue.add("a");
     pQueue.poll();

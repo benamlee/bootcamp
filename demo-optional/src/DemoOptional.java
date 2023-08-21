@@ -4,6 +4,17 @@ import java.util.Optional;
 
 public class DemoOptional {
   public static void main(String[] args) throws Exception {
+
+
+    // Optional<Book> -> Book -> String
+    Optional<Book> o = getBook(); // call Mehtod
+    if (!o.isPresent()) {
+
+    }
+    o.ifPresent(e -> {
+
+    });
+
     List<Book> books = new ArrayList<>();
     books.add(new Book("John"));
     books.add(new Book("Mary"));

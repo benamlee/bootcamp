@@ -50,7 +50,33 @@ public class JavaQuest54 {
   }
 
   public static List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {
+    List<Integer> integers = new ArrayList<>();
+    for (int i : nums1) {
+      for (int j : nums2) {
+        if (i == j)
+          integers.add(i);
+      }
+    }
 
+    for (int i : nums1) {
+      if (integers.contains(i))
+        continue;
+      for (int j : nums3) {
+        if (i == j)
+          integers.add(i);
+      }
+    }
+
+    for (int i : nums3) {
+      if (integers.contains(i))
+        continue;
+      for (int j : nums2) {
+        if (i == j)
+          integers.add(i);
+      }
+    }
+    
+    return integers;
   }
 
 }

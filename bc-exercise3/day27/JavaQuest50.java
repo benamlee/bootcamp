@@ -25,6 +25,9 @@ Explanation: We can split 687 so that num1 is 68 and num2 is 7, which would give
 Constraints:
 
 10 <= num <= 109 */
+
+import java.util.Arrays;
+
 public class JavaQuest50 {
   public static void main(String[] args) {
     System.out.println(splitNum(4325));// 59
@@ -35,7 +38,21 @@ public class JavaQuest50 {
   }
 
   public static int splitNum(int num) {
-
+    int[] nums = new int[(int)Math.log10(num) + 1];
+    for (int i = 0; i < nums.length; i++) {
+      nums[i] = num % 10;
+      num /= 10;
+    }
+    Arrays.sort(nums);
+    int a = 0;
+    int b = 0;
+    for (int i = 0; i < nums.length; i++) {
+      if (i % 2 ==0)
+        a = a * 10 + nums[i];
+      else
+        b = b * 10 + nums[i];
+    }
+    return a + b;
   }
 
 }
