@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Try {
@@ -61,15 +62,17 @@ public class Try {
 
     System.out.println(sss); // print list
 
-    Integer ab=5;
-    byte cccc= (byte)(ab+4);
+    Integer ab = 5;
+    byte cccc = (byte) (ab + 4);
     System.out.println(cccc);
 
-    LinkedList<Integer> asds= new LinkedList<>();
+    LinkedList<Integer> asds = new LinkedList<>();
     asds.addLast(1);
     asds.addLast(2);
     asds.addLast(3);
     System.out.println(asds);
- 
+
+    PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+
   }
 }
