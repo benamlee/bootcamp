@@ -2,7 +2,7 @@ public class Try {
   String thing;
   int level;
 
-  private Try(Builder builder) {
+  private Try(Builder builder) { // inner class
     this.thing = builder.thing;
     this.level = builder.level;
   }

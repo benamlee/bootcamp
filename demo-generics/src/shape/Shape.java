@@ -29,6 +29,7 @@ public abstract class Shape { // 是描象，是歸納，不是功能，不會�
 
     // 內文唔會咁寫(next line...<? extends Shape>)
     List<? extends Shape> list = new ArrayList<Circle>(); // 只可以入一種同類//咁寫add唔到野, =>廢了
+    // list.add(shape); // add circle fail
     List<Circle> list11 = new ArrayList<Circle>();
     List<Square> list12 = new ArrayList<Square>();
     list = list11;
@@ -51,8 +52,10 @@ public abstract class Shape { // 是描象，是歸納，不是功能，不會�
     // list.add(new Circle()); // compile check refer declaration
 
 
-
+    // 正確寫法!!!!
     List<Shape> list2 = new ArrayList<>(); // 所有 Shape都入得
+    // list2 = list11; // 裝不到 <>入面做不到polymorphism
+    // list2 = list12; // 裝不到
     list2.add(shape);
     list2.add(shape2);
     list2.add(c1);

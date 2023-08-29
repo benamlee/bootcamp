@@ -17,6 +17,29 @@ public class EE {
     e.b = new AA(100); // here e.b can declare AA || BB class
     System.out.println(e.b.b);
 
- 
+
+  }
+
+  public static <T extends Number> int method10(T t) throws Exception {
+    if (t instanceof Number)
+      throw new Exception();
+    return 10;
+  }
+
+  public static int method11(List<? extends Number> t) throws Exception {
+    try {
+      throw new Exception(); // polymorphism
+
+    } catch (Exception e) {
+
+    } 
+    return 5;
+  }
+   public static int method11(int n)  { 
+    int a =1;
+   if(a==1)
+      throw new IllegalArgumentException(); // RuntimeException 就唔洗簽名接
+
+    return 5;
   }
 }

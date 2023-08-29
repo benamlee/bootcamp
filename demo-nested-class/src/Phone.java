@@ -3,7 +3,7 @@ public class Phone {
   private Color color;
   private double weight;
 
-   // it is learning for spring boot
+  // it is learning for spring boot
   public Phone(Builder builder) { // 封
     this.number = builder.number;
     this.color = builder.color;

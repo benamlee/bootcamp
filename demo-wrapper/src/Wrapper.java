@@ -1,5 +1,3 @@
-import javax.swing.text.html.HTMLDocument.HTMLReader.CharacterAction;
-
 public class Wrapper { // Class
   public static void main(String[] args) {
     // Primitives: byte, short, ...

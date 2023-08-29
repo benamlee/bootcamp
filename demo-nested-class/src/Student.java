@@ -143,7 +143,7 @@ public class Student {
   public static void main(String[] args) {
     Student student = new Student("Ben");
     Student.Bag bag = new Student.Bag(); // Bag is just a class that is static and inside Student
-    Student.Grade grade = new Student("BenBen").new Grade(70);
+    Student.Grade grade = new Student("BenBen").new Grade(70); // instance inner class, use outer obj to .new inner obj
     grade.printStudentName();
     Student.Grade math = student.new Grade(100);
     Student.Grade chem = student.new Grade(99);

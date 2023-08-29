@@ -1,3 +1,4 @@
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -72,7 +73,17 @@ public class Try {
     asds.addLast(3);
     System.out.println(asds);
 
-    PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+    PriorityQueue<Integer> pq = new PriorityQueue<>((x, y) -> y > x ? 1 : -1);
+    int g=9,h = 9;
+    System.out.println(g+h);
+    // PriorityQueue<Integer> pq2 = new PriorityQueue<>((a, b) -> b > a ? 1 : -1); // Lambda expression's parameter b cannot redeclare another local variable defined in an enclosing scope.
+    // a, b is used
 
+    ArrayDeque<Integer> hgy = new ArrayDeque<>();
+    System.out.println(hgy.size());
+    int uu=(int)Math.log10(100);
+    System.out.println(uu);
+    char[]arr=s.toCharArray();
+    Arrays.asList(null);
   }
 }
