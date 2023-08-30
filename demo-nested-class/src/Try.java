@@ -2,7 +2,7 @@ public class Try {
   String thing;
   int level;
 
-  private Try(Builder builder) { // inner class
+  public Try(Builder builder) { // inner class
     this.thing = builder.thing;
     this.level = builder.level;
   }
@@ -35,6 +35,6 @@ public class Try {
 
   public static void main(String[] args) {
     // Student.Bag sb = new Student.Bag(); // all private
-
+    Try try123 = Try.builder().level(5).thing("sleep").build();
   }
 }
