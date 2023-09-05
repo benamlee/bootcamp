@@ -87,20 +87,20 @@ public class DemoArrayListStream {
     Stream.of(1, 2, 3, 4) // example 1
         // .filter(e -> e > 0) //
         .map(e -> {
-          System.out.println(e); // why no action? // without filter
+          System.out.println("eg1"); // why no action? // without filter
           return e; // action with filter
         }).count(); // terminate operation
 
     Stream.of(1, 2, 3, 4) // example 2
         .filter(e -> e == 2).map(e -> {
-          System.out.println(e); // why no action?
+          System.out.println("eg2"); // why no action?
           return e;
           // }).forEach(e->System.out.println(2)); // terminate operation
         }).count();
 
     List<Integer> abc = Stream.of(1, 2, 3, 4) // example 3
         .filter(e -> e > 1).map(e -> {
-          System.out.println(e); // why no action?
+          System.out.println("eg3"); // why no action?
           return 100;
           // }).forEach(e->System.out.println(2)); // terminate operation
         }).collect(Collectors.toList());

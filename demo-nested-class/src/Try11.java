@@ -1,8 +1,8 @@
-public class Try {
+public class Try11 {
   String thing;
   int level;
 
-  public Try(Builder builder) { // inner class
+  public Try11(Builder builder) { // inner class
     this.thing = builder.thing;
     this.level = builder.level;
   }
@@ -25,8 +25,8 @@ public class Try {
       return this;
     }
 
-    public Try build() {
-      return new Try(this); // set 好哂最後比番主角 class
+    public Try11 build() {
+      return new Try11(this); // set 好哂最後比番主角 class
     }
 
   }
@@ -35,6 +35,6 @@ public class Try {
 
   public static void main(String[] args) {
     // Student.Bag sb = new Student.Bag(); // all private
-    Try try123 = Try.builder().level(5).thing("sleep").build();
+    Try11 try123 = Try11.builder().level(5).thing("sleep").build();
   }
 }

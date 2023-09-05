@@ -53,9 +53,9 @@ public class Company2 {
         company.add(new Staff(2, 10000, "Mary"));
         System.out.println(company.staffs.length); // 2
 
-        List<Person> persons = Arrays.stream(company.getStaffs()) //
+        List<Person8> persons = Arrays.stream(company.getStaffs()) //
                 .filter(e -> e.getSalary() > 20000) //
-                .map(e -> new Person(e.getName())) //
+                .map(e -> new Person8(e.getName())) //
                 .collect(Collectors.toList());
         System.out.println(persons);
 

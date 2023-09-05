@@ -20,7 +20,7 @@ public class DemoOptional {
     books.add(new Book("Mary"));
     books.add(new Book("Peter"));
 
-    Optional book = books.stream() // here, even there is no books.streak, Optional book is not null, but Optional book carry a message no books
+    Optional<Book> book = books.stream() // here, even there is no books.streak, Optional book is not null, but Optional book carry a message no books
         .filter(b -> b.author.startsWith("T")) //
         .findAny();
 
@@ -59,8 +59,8 @@ public class DemoOptional {
     // may return pass something outside
 
     Book newBook3 = book6.orElseGet(() -> new Book("default"));
-    Book newBook4 = book6.orElseThrow(() -> new Exception());
-
+    Book newBook4 = book6.orElseThrow(() -> new Exception()); // here cos book6 is Optional.empty
+    // so throw an Exception
   }
 
   public static Optional<Book> getBook() {

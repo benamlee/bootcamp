@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import math.LengthFunction;
 
 public class FunctionDemo {
   public static void main(String[] args) {

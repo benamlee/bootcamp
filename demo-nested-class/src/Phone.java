@@ -58,7 +58,7 @@ public class Phone {
       Phone phone2 = Phone.builder().build();
       System.out.println(phone2);
 
-      Try try123 = Try.builder().level(5).thing("sleep").build();
+      Try11 try123 = Try11.builder().level(5).thing("sleep").build();
 
 
     }
