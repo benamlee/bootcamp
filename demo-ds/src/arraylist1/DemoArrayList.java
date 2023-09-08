@@ -82,7 +82,9 @@ public class DemoArrayList {
     numbers2.clear(); // remove all elements
     System.out.println(numbers2); // []
 
-
+    int[] nums= new int[]{1,2,3};
+    // List<Integer> na = new ArrayList<>(Arrays.asList(nums)); // cannot, run-time error
+    System.out.println(na);
 
   }
 }

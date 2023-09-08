@@ -1,0 +1,40 @@
+// Represent a Student object
+{
+    "name" : "John",
+    "age" : 17,
+    "salary" : 10000.5,
+    "isMale" : false
+}
+
+// Represent List of Student objects
+[
+    {
+        "name" : "John",
+        "age" : 17,
+        "salary" : 10000.5,
+        "isMale" : true
+    },
+    {
+        "name" : "Mary",
+        "age" : 19,
+        "salary" : 10100.5,
+        "isMale" : false
+    },
+    {
+        "name" : "Betty",
+        "age" : 19,
+        "salary" : null,
+        "isMale" : null
+    }
+]
+
+// Other Lists (Valid)
+["John", "Peter"]
+[17, 19, 20]
+
+// Not Invalid JSON
+["John", 19]
+[
+    "name" : "John",
+    "age" : 17
+]

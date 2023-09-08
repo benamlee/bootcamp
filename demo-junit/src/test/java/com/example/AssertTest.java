@@ -2,11 +2,13 @@ package com.example;
 
 import static org.junit.jupiter.api.Assertions.*; // 有static->下面唔洗打class名,*->包哂所有method
 import java.time.Duration;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 // @TestInstance(TestInstance.Lifecycle.PER_CLASS) // use only one obj to run all method
 @TestInstance(TestInstance.Lifecycle.PER_METHOD) // default // each method new one obj
+@DisplayName("Assert Method Tests")
 public class AssertTest {
 
     private int x;
@@ -14,6 +16,7 @@ public class AssertTest {
     // each one is instance method and has its x
     // so each test create new object and each x++ then = 1
     @Test
+    @DisplayName("AssertEquals Test")
     void testAssertEqual() {
         // Assertions.assertEquals(expected value, actual value)
         assertEquals(5, App.add(2, 3));

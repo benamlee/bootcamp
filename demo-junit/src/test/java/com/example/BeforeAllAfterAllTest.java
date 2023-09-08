@@ -6,13 +6,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-@TestInstance(TestInstance.Lifecycle.PER_METHOD)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BeforeAllAfterAllTest {
 
     private int x;
 
+    // @BeforeAll AfterAll can be instance only if PER_CLASS, cos only one obj, run everything once
+    // if PER_METHOD must be static, cos run once before after all obj done
     @BeforeAll
-    static void beforeAll() { // static
+    static void beforeAll() { // @BeforeAll methods must have a void return type and must be static by default.
         System.out.println("beforeAll start");
     }
 
@@ -32,7 +34,7 @@ public class BeforeAllAfterAllTest {
     void test2() {
         x++;
         System.out.println("test2 x=" + x);
-        assertTrue(x == 2);
+        assertTrue(x == 2); // per_class -> 2 ; per_method -> 1
     }
 
 }
