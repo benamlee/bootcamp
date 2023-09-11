@@ -107,5 +107,9 @@ AND YEAR(B.BONUS_DATE) = 2021
 
 -- 6
 DELETE FROM WORKER;
+-- because a foreign key constraint fails (`org`.`bonus`, CONSTRAINT `bonus_ibfk_1` FOREIGN KEY (`WORKER_REF_ID`) REFERENCES `worker` (`WORKER_ID`))
+-- worker table have the primary key that the bonus table have a foreign key relying on
+drop foreign key (worker_ref_id) references worker(worker_id); -- ????
+
 -- 7
 DROP TABLE WORKER;

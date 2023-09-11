@@ -2,11 +2,13 @@ package com.example;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @RequiredArgsConstructor // NonNull and final
 public class Checkout {
 
     @NonNull
+    @Setter
     private Calculator calculator;
 
     // public Checkout(Calculator calculator) {
@@ -31,5 +33,9 @@ public class Checkout {
         }
         System.out.println(3);
         return this.calculator.multiply(x, y) + this.calculator.substract(x, y);
+    }
+
+    public int out() {
+        return this.calculator.b1() + this.calculator.b2();
     }
 }

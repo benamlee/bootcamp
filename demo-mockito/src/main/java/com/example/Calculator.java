@@ -17,5 +17,13 @@ public class Calculator {
         return x * y;
     }
 
+    public int b1(){
+        return 100;
+    }
+
+    public int b2(){
+        return 200;
+    }
+
 
 }
