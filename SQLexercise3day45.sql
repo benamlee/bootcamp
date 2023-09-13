@@ -101,5 +101,15 @@ insert into invoice_item values (9, 6, 4, 6, 25, 150);
 select * from invoice_item;
 
 -- 1
+-- copy answer
+select 'customer', c.id, c.customer_name
+from customer c
+where not exists (select * from invoice i where i.customer_id = c.id)
+union
+select 'product', p.id, p.product_name
+from product p
+where not exists (select * from invoice_item t where t.product_id = p.id)
+;
 
 -- 2
+
