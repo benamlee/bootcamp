@@ -23,11 +23,11 @@ public enum PowerBall {
 
     public static void endGame(Game game) {
         if(game.gameMode == RUNRACING)
-        return runWin();
+        return runWin(game);
         if(game.gameMode == KILLTHEBOSS)
-        return killWin();
+        return killWin(game);
         if(game.gameMode == FIGHTING5V5)
-        return fightWin();
+        return fightWin(game);
     }
 
 public static runRank(){
