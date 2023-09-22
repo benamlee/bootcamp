@@ -1,6 +1,5 @@
 package com.example.democalculator.controller.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +15,6 @@ public class CalculatorController implements CalculatorOperation {
 
     @Autowired
     CalculatorService calculatorService; // find the class that can put in this interface
-
-    // @Autowired
-    // List<String> strings;
 
     @Override
     public List<String> getStrings() {
