@@ -39,6 +39,12 @@ public class ApiResponse<T> {
             return this;
         }
 
+        public ApiResponseBuilder<T> concatMessageIfPresent(String str) {
+            if (this.message != null && str != null)
+              this.message += " " + str;
+            return this;
+          }
+
         public ApiResponseBuilder<T> ok() {
             this.code = Code.OK.getCode();
             this.message = Code.OK.getDesc();

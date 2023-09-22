@@ -3,8 +3,10 @@ package com.example.demofinnhub.exception;
 import com.example.demofinnhub.infra.BusinessException;
 import com.example.demofinnhub.infra.Code;
 
-public class STKException extends BusinessException {
-    public STKException(Code code) {
+public class FinnhubException extends BusinessException {
+
+    public FinnhubException(Code code) {
         super(code);
     }
+    
 }

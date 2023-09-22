@@ -1,19 +1,14 @@
-#token=ck4flr1r01qus81pv4l0ck4flr1r01qus81pv4lg
+server.port: 8085
 
-
-server:
-    port: 8085
-
-
-# api: ''
-api: 
+api:
     finnhub:
-        domain: 'finnhub.io/api/v1' # cannot have "/", otherwise, UriComponentsBuilder .build() finally
-        endpoint: 
-            profile2: '/stock/profile2'
-            stock: '/quote'
-
-API_Key: 'ck5rdg9r01qls0umc6mgck5rdg9r01qls0umc6n0'
+        token: 'ck5rdg9r01qls0umc6mgck5rdg9r01qls0umc6n0'
+        domain: 'finnhub.io' # cannot have "/", otherwise, UriComponentsBuilder .build() finally
+        base-url: 'api/v1'
+        endpoints:
+            stock:
+                profile2: '/stock/profile2'
+                quote: '/quote'
 
 spring.datasource:
     url: 'jdbc:postgresql://localhost:5432/postgres'
@@ -24,8 +19,9 @@ spring.jpa:
     ## Hibernate Properties
     properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
     # Hibernate ddl auto (create, create-drop, validate, update)
-    hibernate.ddl-auto: validate # update
+    hibernate.ddl-auto: update
     # update -> 冇table會自動create
+    # validate -> check sql 有冇table
 
 spring.sql.init:
     # schema-locations: classpath:ddl/DDL_DROPS.sql, classpath:ddl/DDL_TUSERS.sql, classpath:ddl/DDL_TPOSTS.sql

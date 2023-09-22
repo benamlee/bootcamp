@@ -1,24 +1,18 @@
 package com.example.demofinnhub.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.example.demofinnhub.model.CompanyProfile;
-// import com.example.demofinnhub.model.StockDTO;
-import com.example.demofinnhub.model.Stock;
-import com.example.demofinnhub.model.StockDTO;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import com.example.demofinnhub.exception.FinnhubException;
+import com.example.demofinnhub.infra.ApiResponse;
+import com.example.demofinnhub.model.dto.StockDTO;
 
 public interface StockOperation {
 
-    // @GetMapping(value = "/stock")
-    // StockDTO findStock();
-
-    @GetMapping(value = "/stockprice")
-    Stock findStock(String symbol);
-
-    @GetMapping(value = "/companyprofile")
-    CompanyProfile findCompanyProfile(String symbol);
-
-    @GetMapping(value = "/stock")
-    StockDTO response(String symbol);
-
-    
+   
+  @GetMapping(value = "/stock")
+  @ResponseStatus(value = HttpStatus.OK)
+  ApiResponse<StockDTO> stockInfo(@RequestParam("symbol") String symbol)
+      throws FinnhubException;
 }

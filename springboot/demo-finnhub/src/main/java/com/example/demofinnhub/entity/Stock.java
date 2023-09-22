@@ -1,9 +1,8 @@
 package com.example.demofinnhub.entity;
 
-
-
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +14,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "finnhub_stocks")
@@ -23,10 +23,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class Stock123 implements Serializable {
+@ToString
+public class Stock implements Serializable {
 
     @Id // means primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto-increment
     private Long id;
 
     private String country;
@@ -42,6 +43,22 @@ public class Stock123 implements Serializable {
     @Column(name = "market_cap", columnDefinition = "NUMERIC(15,2)")
     private double marketCap;
 
+    @Column(name = "currency")
     private String currency;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Stock))
+            return false;
+        Stock stock = (Stock) o;
+        return Objects.equals(this.id, stock.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id);
+    }
 
 }

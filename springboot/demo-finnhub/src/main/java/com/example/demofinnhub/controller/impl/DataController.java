@@ -2,52 +2,57 @@ package com.example.demofinnhub.controller.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demofinnhub.controller.DataOperation;
-import com.example.demofinnhub.entity.Stock123;
+import com.example.demofinnhub.entity.Stock;
 import com.example.demofinnhub.entity.StockPrice;
-import com.example.demofinnhub.service.FinService;
+import com.example.demofinnhub.service.CompanyService;
+import com.example.demofinnhub.service.StockPriceService;
 
 @RestController
 @RequestMapping(value = "/api/v1")
 public class DataController implements DataOperation {
+    @Autowired
+    private CompanyService companyService;
 
+    @Autowired
+    private StockPriceService stockPriceService;
 
-  @Autowired
-  FinService finService;
+    @Override
+    public List<Stock> findAll() {
+        return companyService.findAll();
+    }
 
-  @Override
-  public Stock123 save(Stock123 stock123) {
-    return finService.save(stock123);
-  }
+    @Override
+    public List<Stock> findByCountryAndMarketCap(String country,
+            double marketCap) {
+        return companyService.findByCountryAndMarketCap(country, marketCap);
+    }
 
-  @Override
-  public void deleteById(Long id) {
-    finService.deleteById(id);
-  }
+    @Override
+    public Stock save(Stock stock) {
+        return companyService.save(stock);
+    }
 
-  @Override
-  public List<Stock123> findAll() {
-    return finService.findAll();
-  }
+    @Override
+    public void deleteById(Long id) {
+        companyService.deleteById(id);
+    }
 
-  @Override
-  public void updateById(Long id, Stock123 stock123) {
-    finService.update(id, stock123);
-  }
+    @Override
+    public void updateById(Long id, Stock stock) {
+        companyService.updateById(id, stock);
+    }
 
-  @Override
-  public List<Stock123> findByCountry(String country) {
-    return finService.findByCountry(country);
-  }
+    @Override
+    public void updateCompanyNameById(Long id, String companyName) {
+        companyService.updateCompanyNameById(id, companyName);
+    }
 
-//   @Override
-//   public StockPrice save(StockPrice stockPrice) {
-// return finService.save(stockPrice);
-
-  }
-
+    @Override
+    public StockPrice save(Long id, StockPrice stockPrice) {
+        return stockPriceService.save(id, stockPrice);
+    }
 
 }

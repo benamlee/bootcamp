@@ -1,5 +1,6 @@
 package com.example.demofinnhub.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,14 +22,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class StockPrice {
+@Builder
+public class StockPrice implements Serializable {
 
     @Id // means primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "datetime")
-    private LocalDateTime datetime;
+    private final LocalDateTime datetime = LocalDateTime.now();
 
     @Column(name = "current_price", columnDefinition = "NUMERIC(15,2)")
     private double currentPrice;
@@ -44,7 +47,7 @@ public class StockPrice {
     @Column(name = "prev_day_close", columnDefinition = "NUMERIC(15,2)")
     private double prevDayClose;
 
-    // @ManyToOne
-    // @JoinColumn(name = "stock_id", nullable = false)
-    // private Stock123 stock123;
+    @ManyToOne
+    @JoinColumn(name = "stock_id", nullable = false)
+    private Stock stock;
 }

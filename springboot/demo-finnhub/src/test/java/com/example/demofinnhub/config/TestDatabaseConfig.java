@@ -1,4 +1,4 @@
-package com.example.demofinnhub;
+package com.example.demofinnhub.config;
 
 import javax.sql.DataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
