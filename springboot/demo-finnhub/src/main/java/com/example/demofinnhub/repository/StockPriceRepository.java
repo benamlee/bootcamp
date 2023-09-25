@@ -7,5 +7,5 @@ import com.example.demofinnhub.entity.StockPrice;
 
 @Repository // this interface is like query in SQL
 public interface StockPriceRepository extends JpaRepository<StockPrice,Long>{
-    
+    // in the back, it will generate many class to do
 }

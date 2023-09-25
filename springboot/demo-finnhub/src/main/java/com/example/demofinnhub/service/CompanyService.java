@@ -6,7 +6,10 @@ import com.example.demofinnhub.exception.FinnhubException;
 import com.example.demofinnhub.model.CompanyProfile;
 
 public interface CompanyService {
-    CompanyProfile getCompanyProfile(String symbol) throws FinnhubException;
+
+  CompanyProfile getCompanyProfile(String symbol) throws FinnhubException;
+
+  void refresh() throws FinnhubException;
 
   void updateById(Long id, Stock stock);
 
@@ -17,6 +20,8 @@ public interface CompanyService {
   Stock save(Stock stock);
 
   void deleteById(Long id);
+
+  void deleteAll();
 
   void updateCompanyNameById(Long id, String companyName);
 

@@ -13,13 +13,13 @@ public class AppConfig {
     private String token;
 
     @Bean
-    ModelMapper modelMapper() {
+    ModelMapper modelMapper() { // 
         return new ModelMapper();
     }
 
     @Bean
     RestTemplate restTemplate() {
-        return new RestTemplate();
+        return new RestTemplate(); 
     }
 
     @Bean

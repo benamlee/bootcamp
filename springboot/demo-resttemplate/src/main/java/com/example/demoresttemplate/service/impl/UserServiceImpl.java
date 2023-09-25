@@ -38,10 +38,10 @@ public class UserServiceImpl implements UserService { // Bean
         System.out.println("url=" + url);
         // Invoke API + Jaskson Deserialization (JSON -> Object)
         // try {
-        User[] users = restTemplate.getForObject(url, User[].class);
-        // return Arrays.asList(users);
+        User[] users = restTemplate.getForObject(url, User[].class); // 這句是重點
+        return Arrays.asList(users); // 正常
         // } catch (RestClientException e) {
-        throw new JPHException(Code.JPH_NOTFOUND);
+        // throw new JPHException(Code.JPH_NOTFOUND); // 試exception
         // }
     }
 

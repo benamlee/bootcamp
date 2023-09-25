@@ -2,12 +2,15 @@ package com.example.demofinnhub.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Objects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,19 +49,28 @@ public class Stock implements Serializable {
     @Column(name = "currency")
     private String currency;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Stock))
-            return false;
-        Stock stock = (Stock) o;
-        return Objects.equals(this.id, stock.id);
-    }
+    // @Override
+    // public boolean equals(Object o) {
+    // if (this == o)
+    // return true;
+    // if (!(o instanceof Stock))
+    // return false;
+    // Stock stock = (Stock) o;
+    // return Objects.equals(this.id, stock.id);
+    // }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(this.id);
-    }
+    // @Override
+    // public int hashCode() {
+    // return Objects.hash(this.id);
+    // }
+    
+    @Column(name = "status", columnDefinition = "VARCHAR(1)") // 'A', 'I'
+    private Character stockStatus;
+
+    @OneToOne
+    @JoinColumn(name = "symbol_id", nullable = false)
+    private StockSymbol stockSymbol;
+
+
 
 }

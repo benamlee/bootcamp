@@ -9,15 +9,26 @@ api:
             stock:
                 profile2: '/stock/profile2'
                 quote: '/quote'
+                symbol: '/stock/symbol'
 
 spring.datasource:
-    url: 'jdbc:postgresql://localhost:5432/postgres'
-    username: 'postgres'
-    password: 'aa19888888'
+    # driverClassName: org.hibernate.dialect.PostgreSQLDialect
+    driverClassName: 'org.h2.Driver'
+    url: 'jdbc:h2:mem:jpademo'
+    username: 'sa'
+    password: 
+    # url: 'jdbc:postgresql://localhost:5432/postgres'
+    # username: 'postgres'
+    # password: 'aa19888888'
+spring:
+    h2:
+        console:
+            enabled: true
+
 spring.jpa:
     show-sql: true
     ## Hibernate Properties
-    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    # properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
     # Hibernate ddl auto (create, create-drop, validate, update)
     hibernate.ddl-auto: update
     # update -> 冇table會自動create
@@ -26,3 +37,6 @@ spring.jpa:
 spring.sql.init:
     # schema-locations: classpath:ddl/DDL_DROPS.sql, classpath:ddl/DDL_TUSERS.sql, classpath:ddl/DDL_TPOSTS.sql
     mode: always # always
+    platform: h2
+
+spring.profiles.active: enableScheduling

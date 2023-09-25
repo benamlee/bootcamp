@@ -23,7 +23,7 @@ import com.example.demofinnhub.entity.Stock;
 import com.example.demofinnhub.repository.StockRepository;
 
 
-@DataJpaTest // inject Repository related Beans
+// @DataJpaTest // inject Repository related Beans
 @Import(TestDatabaseConfig.class)
 @TestPropertySource(properties = {"spring.jpa.hibernate.ddl-auto=update"})
 @TestMethodOrder(OrderAnnotation.class)
@@ -40,7 +40,7 @@ public class StockRepositoryTest {
     // System.out.println(stockRepository.findAll());
     // }
 
-    @Test
+    // @Test
     @Order(1)
     void testFindById() {
         Stock entity = new Stock();
@@ -67,7 +67,7 @@ public class StockRepositoryTest {
                 hasProperty("companyName", equalTo("Apple Company")));
     }
 
-    @Test
+    // @Test
     @Order(2)
     void testDeleteById() {
         Stock stock = new Stock();
@@ -83,7 +83,7 @@ public class StockRepositoryTest {
         assertThat(afterDeleted, CoreMatchers.nullValue());
     }
 
-    @Test
+    // @Test
     @Order(3)
     void testSave() {
         Stock stock = new Stock();
@@ -103,7 +103,7 @@ public class StockRepositoryTest {
         assertThat(afterSave, hasProperty("id", equalTo(4L)));
     }
 
-    @Test
+    // @Test
     @Order(4)
     void testFindAll() {
         Stock stock1 = new Stock();

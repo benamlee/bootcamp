@@ -10,9 +10,14 @@ import com.example.demofinnhub.model.dto.StockDTO;
 
 public interface StockOperation {
 
-   
+
   @GetMapping(value = "/stock")
   @ResponseStatus(value = HttpStatus.OK)
   ApiResponse<StockDTO> stockInfo(@RequestParam("symbol") String symbol)
       throws FinnhubException;
+
+  // @GetMapping(value = "/stockfromdb")
+  // @ResponseStatus(value = HttpStatus.OK)
+  // ApiResponse<StockDTO> stockInfoFromDb(@RequestParam("symbol") String symbol)
+  //     throws FinnhubException;
 }

@@ -16,6 +16,7 @@ import com.example.demofinnhub.model.Quote;
 import com.example.demofinnhub.repository.StockPriceRepository;
 import com.example.demofinnhub.repository.StockRepository;
 import com.example.demofinnhub.service.StockPriceService;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class StockPriceServiceImpl implements StockPriceService {
@@ -63,7 +64,8 @@ public class StockPriceServiceImpl implements StockPriceService {
 
   @Override
   public StockPrice save(Long id, StockPrice stockPrice) {
-    Stock stock = stockRepository.findById(id).orElse(null);
+    Stock stock = stockRepository.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("Stock ID Not Found."));
     stockPrice.setStock(stock);
     return stockPriceRepository.save(stockPrice);
   }
