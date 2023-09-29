@@ -1,4 +1,4 @@
-package com.example.demofinnhub.model.dto;
+package com.example.demofinnhub.model.dto.web.resp;
 
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;

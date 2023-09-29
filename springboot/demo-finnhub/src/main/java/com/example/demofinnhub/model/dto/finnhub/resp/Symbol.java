@@ -1,4 +1,4 @@
-package com.example.demofinnhub.model;
+package com.example.demofinnhub.model.dto.finnhub.resp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

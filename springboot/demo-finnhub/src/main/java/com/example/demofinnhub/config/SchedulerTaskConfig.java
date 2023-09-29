@@ -9,8 +9,8 @@ import com.example.demofinnhub.service.CompanyService;
 
 @Component
 @EnableScheduling
+// @Profile("enableScheduling")
 public class SchedulerTaskConfig {
-
 
   public static boolean start = false;
 
@@ -40,5 +40,4 @@ public class SchedulerTaskConfig {
       System.out.println("FixedTime Task - " + System.currentTimeMillis());
     }
   }
-
 }

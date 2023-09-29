@@ -12,24 +12,26 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
 import com.example.demofinnhub.entity.Stock;
 import com.example.demofinnhub.exception.FinnhubException;
-import com.example.demofinnhub.model.CompanyProfile;
+import com.example.demofinnhub.model.dto.finnhub.resp.CompanyProfile;
 import com.example.demofinnhub.repository.StockRepository;
 import com.example.demofinnhub.service.CompanyService;
 
 // Test-driven development (TDD)
 @SpringBootTest
+@ActiveProfiles("test")
 public class CompanyServiceTest { // this class is to test methods
 
   @MockBean // service will autowird repository
   private StockRepository stockRepository;
 
-  @MockBean 
+  @MockBean
   private RestTemplate restTemplate;
 
-  @Autowired 
+  @Autowired
   private String finnhubToken;
 
   @Autowired

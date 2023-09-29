@@ -1,0 +1,24 @@
+server.port: 8088
+
+api:
+    finnhub:
+        token: 'ck5rdg9r01qls0umc6mgck5rdg9r01qls0umc6n0'
+        domain: 'finnhub.io'
+        base-url: 'api/v1' # no need '/' at begin
+        endpoints:
+            stock:
+                profile2: '/stock/profile2'
+                quote: '/quote'
+                symbol: '/stock/symbol'
+
+# redis-key:
+#     company-profile2: '???'
+
+# spring:
+#     datasource: 
+#         url: 'jdbc:postgresql://localhost:5432/postgres'
+#         username: 'postgres'
+#         password: 'aa19888888'
+#     jpa:
+#         show-sql: true
+#         hibernate.ddl-auto: update

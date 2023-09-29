@@ -1,6 +1,5 @@
 package com.example.demofinnhub;
 
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -13,14 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import com.example.demofinnhub.controller.impl.StockController;
-import com.example.demofinnhub.model.dto.CompanyProfileDTO;
-import com.example.demofinnhub.model.dto.StockDTO;
+import com.example.demofinnhub.model.dto.web.resp.CompanyProfileDTO;
+import com.example.demofinnhub.model.dto.web.resp.StockDTO;
 import com.example.demofinnhub.service.WebStockService;
 
-
 @WebMvcTest(StockController.class)
+@ActiveProfiles("test")
 public class StockControllerTest {
 
   @Autowired

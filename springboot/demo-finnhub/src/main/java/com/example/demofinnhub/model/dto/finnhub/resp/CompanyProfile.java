@@ -1,4 +1,4 @@
-package com.example.demofinnhub.model;
+package com.example.demofinnhub.model.dto.finnhub.resp;
 
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonProperty;

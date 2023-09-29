@@ -1,7 +1,6 @@
 package com.example.demofinnhub;
 
 
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
@@ -17,16 +16,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import com.example.demofinnhub.config.TestDatabaseConfig;
 import com.example.demofinnhub.entity.Stock;
+import com.example.demofinnhub.entity.StockSymbol;
 import com.example.demofinnhub.repository.StockRepository;
-
 
 // @DataJpaTest // inject Repository related Beans
 @Import(TestDatabaseConfig.class)
 @TestPropertySource(properties = {"spring.jpa.hibernate.ddl-auto=update"})
 @TestMethodOrder(OrderAnnotation.class)
+@ActiveProfiles("test")
 public class StockRepositoryTest {
 
     @Autowired
@@ -43,28 +44,37 @@ public class StockRepositoryTest {
     // @Test
     @Order(1)
     void testFindById() {
+        StockSymbol mockedSymbol = new StockSymbol(1L, "AAPL");
+        System.out.println("mockedSymbol=" + mockedSymbol);
+        entityManager.persist(mockedSymbol);
+
+        System.out.println("mockedSymbol=" + mockedSymbol);
         Stock entity = new Stock();
         entity.setCountry("CN");
         entity.setCompanyName("Orange Company");
         entity.setMarketCap(98761234.23);
+        StockSymbol mockedSymbol2 = new StockSymbol(1L, "AAPL");
+        entity.setStockSymbol(mockedSymbol2);
+        System.out.println("entity=" + entity);
         entityManager.persist(entity); // JPA <-> cache memory <-> database harddisk
+        System.out.println("entity=" + entity);
         entityManager.flush(); // Database commit; -> harddisk
 
         // I am testing the "select * from table where id = 15;"
-        Stock stock = stockRepository.findById(1L).orElse(null);
-        assertThat(stock, hasProperty("country", equalTo("CN")));
-        assertThat(stock,
-                hasProperty("companyName", equalTo("Orange Company")));
+        // Stock stock = stockRepository.findById(1L).orElse(null);
+        // System.out.println("stock="+ stock);
+        // assertThat(stock, hasProperty("country", equalTo("CN")));
+        // assertThat(stock, hasProperty("companyName", equalTo("Orange Company")));
 
-        Stock entity2 = new Stock();
-        entity2.setCountry("US");
-        entity2.setCompanyName("Apple Company");
-        entityManager.persist(entity2);
-        entityManager.flush();
-        Stock stock2 = stockRepository.findById(2L).orElse(null);
-        assertThat(stock2, hasProperty("country", equalTo("US")));
-        assertThat(stock2,
-                hasProperty("companyName", equalTo("Apple Company")));
+        // Stock entity2 = new Stock();
+        // entity2.setCountry("US");
+        // entity2.setCompanyName("Apple Company");
+        // entity2.setStockSymbol(mockedSymbol);
+        // entityManager.persist(entity2);
+        // entityManager.flush();
+        // Stock stock2 = stockRepository.findById(2L).orElse(null);
+        // assertThat(stock2, hasProperty("country", equalTo("US")));
+        // assertThat(stock2, hasProperty("companyName", equalTo("Apple Company")));
     }
 
     // @Test
@@ -74,6 +84,7 @@ public class StockRepositoryTest {
         stock.setCountry("CN");
         stock.setCompanyName("Orange Company");
         stock.setMarketCap(98761234.23);
+        stock.setStockSymbol(new StockSymbol(2L, "AAPL"));
         // Use entityManager to save and get ID
         Long id = (Long) entityManager.persistAndGetId(stock);
         // Test case: JPA deleteById()
@@ -90,6 +101,7 @@ public class StockRepositoryTest {
         stock.setCountry("CN");
         stock.setCompanyName("Orange Company");
         stock.setMarketCap(98761234.23);
+        stock.setStockSymbol(new StockSymbol(2L, "AAPL"));
         // before save
         Stock beforeSave = entityManager.find(Stock.class, 4L);
         assertThat(beforeSave, CoreMatchers.nullValue());
@@ -110,11 +122,13 @@ public class StockRepositoryTest {
         stock1.setCountry("UK");
         stock1.setCompanyName("UK Company");
         stock1.setMarketCap(98761234.23);
+        stock1.setStockSymbol(new StockSymbol(2L, "AAPL"));
 
         Stock stock2 = new Stock();
         stock2.setCountry("SG");
         stock2.setCompanyName("SG Company");
         stock2.setMarketCap(98761234.23);
+        stock2.setStockSymbol(new StockSymbol(2L, "AAPL"));
 
         // before save
         entityManager.persistAndFlush(stock1);

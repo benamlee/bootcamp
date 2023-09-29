@@ -27,8 +27,10 @@ Constraints:
 1 <= nums1.length, nums2.length, nums3.length <= 100
 1 <= nums1[i], nums2[j], nums3[k] <= 100*/
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class JavaQuest54 {
   public static void main(String[] args) {
@@ -50,7 +52,7 @@ public class JavaQuest54 {
   }
 
   public static List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {
-    List<Integer> integers = new ArrayList<>();
+    Set<Integer> integers = new HashSet<>();
     for (int i : nums1) {
       for (int j : nums2) {
         if (i == j)
@@ -59,8 +61,6 @@ public class JavaQuest54 {
     }
 
     for (int i : nums1) {
-      if (integers.contains(i))
-        continue;
       for (int j : nums3) {
         if (i == j)
           integers.add(i);
@@ -68,15 +68,13 @@ public class JavaQuest54 {
     }
 
     for (int i : nums3) {
-      if (integers.contains(i))
-        continue;
       for (int j : nums2) {
         if (i == j)
           integers.add(i);
       }
     }
     
-    return integers;
+    return integers.stream().collect(Collectors.toList());
   }
 
 }

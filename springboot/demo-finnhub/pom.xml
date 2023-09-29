@@ -19,51 +19,65 @@
 	</properties>
 	<dependencies>
 		<dependency>
-		  <groupId>org.springframework.boot</groupId>
-		  <artifactId>spring-boot-starter-web</artifactId> <!-- set up foundation for building web applications with Spring Boot-->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId> <!-- set up foundation for building web applications with
+			Spring Boot-->
 		</dependency>
-	
+
 		<dependency>
-		  <groupId>org.springframework.boot</groupId>
-		  <artifactId>spring-boot-devtools</artifactId> <!-- automatic app restart-->
-		  <scope>runtime</scope>
-		  <optional>true</optional>
-		</dependency>
-		<dependency>
-		  <groupId>org.projectlombok</groupId> <!-- getter, setter, constructor,...-->
-		  <artifactId>lombok</artifactId>
-		  <optional>true</optional>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId> <!-- automatic app restart-->
+			<scope>runtime</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
-		  <groupId>org.modelmapper</groupId>
-		  <artifactId>modelmapper</artifactId> <!-- convert data between diff objs, DTO-->
-		  <version>3.1.1</version>
+			<groupId>org.projectlombok</groupId> <!-- getter, setter, constructor,...-->
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
-		  <groupId>org.springframework.boot</groupId>
-		  <artifactId>spring-boot-starter-data-jpa</artifactId> <!-- repository野 同 Entity一齊用-->
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId> <!-- convert data between diff objs, DTO-->
+			<version>3.1.1</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.postgresql</groupId>
-		  <artifactId>postgresql</artifactId> <!-- postgre database-->
-		  <scope>runtime</scope> <!-- mean available during runtime-->
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.15.2</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.springframework.boot</groupId>
-		  <artifactId>spring-boot-starter-test</artifactId> <!-- provide testing like JUnit, Spring Test, ...-->
-		  <scope>test</scope> <!-- only needed for testing purposes wont be included during runtime-->
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.15.2</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.hamcrest</groupId>
-		  <artifactId>hamcrest-all</artifactId> <!-- Matchers for test case-->
-		  <version>1.3</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId> <!-- repository野 同 Entity一齊用-->
 		</dependency>
 		<dependency>
-		  <groupId>com.h2database</groupId> <!-- h2 database-->
-		  <artifactId>h2</artifactId>
-		  <!-- <scope>test</scope> -->
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId> <!-- postgre database-->
+			<scope>runtime</scope> <!-- mean available during runtime-->
 		</dependency>
-	  </dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId> <!-- provide testing like JUnit, Spring Test, ...-->
+			<scope>test</scope> <!-- only needed for testing purposes wont be included during runtime-->
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId> <!-- Matchers for test case-->
+			<version>1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId> <!-- h2 database-->
+			<artifactId>h2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId> <!-- repository野 同 Entity一齊用-->
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>

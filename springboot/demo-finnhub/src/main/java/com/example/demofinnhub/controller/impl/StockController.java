@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demofinnhub.controller.StockOperation;
 import com.example.demofinnhub.exception.FinnhubException;
 import com.example.demofinnhub.infra.ApiResponse;
-import com.example.demofinnhub.model.dto.StockDTO;
+import com.example.demofinnhub.model.dto.web.resp.StockDTO;
 import com.example.demofinnhub.service.WebStockService;
 
 @RestController

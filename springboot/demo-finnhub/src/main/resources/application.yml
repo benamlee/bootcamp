@@ -1,6 +1,7 @@
+# 第一要睇 yml
 server.port: 8085
 
-api:
+api: # url
     finnhub:
         token: 'ck5rdg9r01qls0umc6mgck5rdg9r01qls0umc6n0'
         domain: 'finnhub.io' # cannot have "/", otherwise, UriComponentsBuilder .build() finally
@@ -11,7 +12,7 @@ api:
                 quote: '/quote'
                 symbol: '/stock/symbol'
 
-spring.datasource:
+spring.datasource: # database
     # driverClassName: org.hibernate.dialect.PostgreSQLDialect
     driverClassName: 'org.h2.Driver'
     url: 'jdbc:h2:mem:jpademo'
@@ -33,6 +34,10 @@ spring.jpa:
     hibernate.ddl-auto: update
     # update -> 冇table會自動create
     # validate -> check sql 有冇table
+
+spring.data.redis:
+    host: localhost
+    port: 6379
 
 spring.sql.init:
     # schema-locations: classpath:ddl/DDL_DROPS.sql, classpath:ddl/DDL_TUSERS.sql, classpath:ddl/DDL_TPOSTS.sql

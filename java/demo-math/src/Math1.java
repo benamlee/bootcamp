@@ -55,6 +55,5 @@ public class Math1 {
     System.out.println(Arrays.toString(result));
 
 
-
   }
 }

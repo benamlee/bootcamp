@@ -14,7 +14,7 @@ import com.example.demofinnhub.entity.StockSymbol;
 import com.example.demofinnhub.exception.FinnhubException;
 import com.example.demofinnhub.infra.Code;
 import com.example.demofinnhub.infra.Protocol;
-import com.example.demofinnhub.model.Symbol;
+import com.example.demofinnhub.model.dto.finnhub.resp.Symbol;
 import com.example.demofinnhub.model.mapper.FinnhubMapper;
 import com.example.demofinnhub.repository.StockSymbolRepository;
 import com.example.demofinnhub.service.StockSymbolService;

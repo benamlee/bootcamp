@@ -3,7 +3,7 @@ package com.example.demofinnhub.service;
 import java.util.List;
 import com.example.demofinnhub.entity.Stock;
 import com.example.demofinnhub.exception.FinnhubException;
-import com.example.demofinnhub.model.CompanyProfile;
+import com.example.demofinnhub.model.dto.finnhub.resp.CompanyProfile;
 
 public interface CompanyService {
 

@@ -1,5 +1,6 @@
 package com.example.demofinnhub.config;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,9 @@ import org.springframework.stereotype.Component;
 import com.example.demofinnhub.entity.Stock;
 import com.example.demofinnhub.entity.StockPrice;
 import com.example.demofinnhub.exception.FinnhubException;
-import com.example.demofinnhub.model.CompanyProfile;
-import com.example.demofinnhub.model.Quote;
-import com.example.demofinnhub.model.Symbol;
+import com.example.demofinnhub.model.dto.finnhub.resp.CompanyProfile;
+import com.example.demofinnhub.model.dto.finnhub.resp.Quote;
+import com.example.demofinnhub.model.dto.finnhub.resp.Symbol;
 import com.example.demofinnhub.model.mapper.FinnhubMapper;
 import com.example.demofinnhub.repository.StockPriceRepository;
 import com.example.demofinnhub.repository.StockRepository;
@@ -25,6 +26,8 @@ public class AppStartRunner implements CommandLineRunner {
 
   public static final List<String> stockInventory =
       List.of("AAPL", "MSFT", "TSLA");
+
+  public static List<String> availableStockList = new ArrayList<>();
 
   @Autowired
   private StockSymbolService stockSymbolService;
@@ -58,9 +61,10 @@ public class AppStartRunner implements CommandLineRunner {
 
     // Call API to get all symbols
     List<Symbol> symbols = stockSymbolService.getAllSymbols().stream()
-        .filter(symbol -> stockInventory.contains(symbol))
+        .filter(symbol -> stockInventory.contains(symbol.getSymbol()))
         .collect(Collectors.toList());
-    System.out.println("All Symbols are inserted.");
+    System.out
+        .println("All Symbols are inserted. No. of Symbols=" + symbols.size());
     // 1. Save all symbols
     stockSymbolService.save(symbols).stream() //
         // .limit(10L) // limit 10 stocks
@@ -80,15 +84,18 @@ public class AppStartRunner implements CommandLineRunner {
             stockPrice.setStock(storedStock);
             stockPriceRepository.save(stockPrice);
             System.out.println("completed symbol=" + symbol.getSymbol());
+            // 4. Get Symbol
+            availableStockList.add(symbol.getSymbol());
+
           } catch (FinnhubException e) {
             System.out
                 .println("RestClientException: Symbol" + symbol.getSymbol());
           }
         });
-    System.out.println("Stocks in inventory are inserted.");
+    System.out.println("Stocks in Inventory are inserted.");
     System.out.println("CommandLineRunner Completed");
+    // System.setProperty("enableScheduling", "true");
     SchedulerTaskConfig.start = true;
-
   }
 
 }

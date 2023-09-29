@@ -1,6 +1,7 @@
 package com.example.demofinnhub.service.impl;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,8 +15,9 @@ import com.example.demofinnhub.entity.StockPrice;
 import com.example.demofinnhub.exception.FinnhubException;
 import com.example.demofinnhub.infra.Code;
 import com.example.demofinnhub.infra.Protocol;
-import com.example.demofinnhub.model.CompanyProfile;
-import com.example.demofinnhub.model.Quote;
+import com.example.demofinnhub.infra.RedisHelper;
+import com.example.demofinnhub.model.dto.finnhub.resp.CompanyProfile;
+import com.example.demofinnhub.model.dto.finnhub.resp.Quote;
 import com.example.demofinnhub.model.mapper.FinnhubMapper;
 import com.example.demofinnhub.repository.StockPriceRepository;
 import com.example.demofinnhub.repository.StockRepository;
@@ -44,6 +46,9 @@ public class CompanyServiceImpl implements CompanyService {
 
   @Autowired
   private StockSymbolRepository stockSymbolRepository;
+
+  @Autowired
+  private RedisHelper<CompanyProfile> redisProfileHelper;
 
   @Autowired
   @Qualifier(value = "finnhubToken")
@@ -175,11 +180,18 @@ public class CompanyServiceImpl implements CompanyService {
         .toUriString();
 
     try {
-      return restTemplate.getForObject(url, CompanyProfile.class); // mocked
+      CompanyProfile profile =
+          restTemplate.getForObject(url, CompanyProfile.class); // mocked
+      // success
+      if (Objects.nonNull(profile)) {
+        redisProfileHelper.set("key", profile, 60000);
+      } else {
+        redisProfileHelper.get("key");
+      }
+      return profile;
     } catch (RestClientException e) {
       throw new FinnhubException(Code.FINNHUB_PROFILE2_NOTFOUND);
     }
-
   }
 
 

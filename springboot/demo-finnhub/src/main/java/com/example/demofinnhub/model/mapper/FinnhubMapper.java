@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 import com.example.demofinnhub.entity.Stock;
 import com.example.demofinnhub.entity.StockPrice;
 import com.example.demofinnhub.entity.StockSymbol;
-import com.example.demofinnhub.model.CompanyProfile;
-import com.example.demofinnhub.model.Quote;
-import com.example.demofinnhub.model.Symbol;
-import com.example.demofinnhub.model.dto.CompanyProfileDTO;
-import com.example.demofinnhub.model.dto.StockDTO;
+import com.example.demofinnhub.model.dto.finnhub.resp.CompanyProfile;
+import com.example.demofinnhub.model.dto.finnhub.resp.Quote;
+import com.example.demofinnhub.model.dto.finnhub.resp.Symbol;
+import com.example.demofinnhub.model.dto.web.resp.CompanyProfileDTO;
+import com.example.demofinnhub.model.dto.web.resp.StockDTO;
 
 @Component
 public class FinnhubMapper {
@@ -49,7 +49,6 @@ public class FinnhubMapper {
   public StockPrice map(Quote quote) {
     return StockPrice.builder() //
         .currentPrice(quote.getCurrentPrice()) //
-        .dayHigh(quote.getDayHigh()) //
         .dayHigh(quote.getDayHigh()) //
         .dayLow(quote.getDayLow()) //
         .dayOpen(quote.getDayOpen()) //

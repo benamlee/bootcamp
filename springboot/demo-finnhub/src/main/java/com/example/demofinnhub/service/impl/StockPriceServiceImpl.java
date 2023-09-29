@@ -12,7 +12,7 @@ import com.example.demofinnhub.entity.StockPrice;
 import com.example.demofinnhub.exception.FinnhubException;
 import com.example.demofinnhub.infra.Code;
 import com.example.demofinnhub.infra.Protocol;
-import com.example.demofinnhub.model.Quote;
+import com.example.demofinnhub.model.dto.finnhub.resp.Quote;
 import com.example.demofinnhub.repository.StockPriceRepository;
 import com.example.demofinnhub.repository.StockRepository;
 import com.example.demofinnhub.service.StockPriceService;
