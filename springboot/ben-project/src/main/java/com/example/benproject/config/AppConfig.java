@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class AppConfig {
 
-    @Value(value = "{api.finnhub.token}")
+    @Value(value = "${api.finnhub.token}") // "$"進入yml整條link
     private String token;
 
     @Bean
