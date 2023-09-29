@@ -15,7 +15,7 @@ import com.example.benproject.service.CompanyProfileService;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
-@Slf4j
+// @Slf4j // 可以用「 log.info("url = " + url); 」去print, 同System.out.print()一樣
 public class CompanyProfileServiceImpl implements CompanyProfileService {
 
     @Autowired
@@ -46,7 +46,7 @@ public class CompanyProfileServiceImpl implements CompanyProfileService {
                 .queryParam("token", token) //
                 .build() //
                 .toUriString();
-                log.info("url = " + url);
+                
         System.out.println("url=" + url);
         // url="https://finnhub.io/api/v1/stock/profile2?symbol=AAPL&token=ck5rdg9r01qls0umc6mgck5rdg9r01qls0umc6n0";
         try {
