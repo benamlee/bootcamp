@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -19,6 +20,7 @@ import com.example.benproject.model.mapper.FinnhubMapper;
 import com.example.benproject.repository.StockSymbolRepository;
 import com.example.benproject.service.StockSymbolService;
 
+@Service
 public class StockSymbolServiceImpl implements StockSymbolService {
 
     // get from website
@@ -82,5 +84,10 @@ public class StockSymbolServiceImpl implements StockSymbolService {
         // Save to DB
         return symbolRepository.saveAll(stockSymbols);
     }
+
+    // @Override
+    // public void deleteAll() {
+    //     symbolRepository.deleteAll();
+    // }
 
 }

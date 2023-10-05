@@ -32,6 +32,7 @@ public class FinnhubMapper {
         .build();
   }
 
+  
   // mapping for database table
 
   // Symbol

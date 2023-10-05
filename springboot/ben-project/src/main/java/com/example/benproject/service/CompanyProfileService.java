@@ -14,4 +14,11 @@ public interface CompanyProfileService {
       // database
       List<CompanyProfile> findAllCompanyProfiles();
 
+      // no need manual operation
+
+      // config scheduler
+      // void refresh() throws FinnhubException;
+
+      // refresh, get data every minute
+      void refresh() throws FinnhubException;
 }

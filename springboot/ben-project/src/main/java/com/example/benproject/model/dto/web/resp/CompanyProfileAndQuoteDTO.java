@@ -13,7 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CompanyProfileAndQuoteDTO {
+public class CompanyProfileAndQuoteDTO { // final format for returning out
 
     private CompanyProfileTempDTO companyProfileTempDTO;
 

@@ -13,6 +13,7 @@ public interface StockSymbolService {
     // database
     List<StockSymbol> save(List<SymbolDTO> symbolDTOs);
 
-    void deleteAll();
+    
+    // void deleteAll();
 
 }

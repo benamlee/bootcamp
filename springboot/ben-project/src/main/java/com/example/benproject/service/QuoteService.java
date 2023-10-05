@@ -14,4 +14,8 @@ public interface QuoteService {
     // database
     List<Quote> findAllQuotes();
 
+    // 人手，no need
+    // Quote save(Long id, Quote quote);
+
+
 }

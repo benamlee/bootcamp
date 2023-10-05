@@ -19,6 +19,7 @@ import com.example.benproject.service.QuoteService;
 @Service
 public class QuoteServiceImpl implements QuoteService {
 
+    // no database
     @Autowired
     private RestTemplate restTemplate;
 
@@ -39,6 +40,9 @@ public class QuoteServiceImpl implements QuoteService {
     // database
     @Autowired
     private QuoteRepository quoteRepository;
+
+    // @Autowired
+    // private CompanyProfileRepository companyProfileRepository;
 
     @Override
     public QuoteDTO getQuote(String symbol) throws FinnhubException {
@@ -61,11 +65,21 @@ public class QuoteServiceImpl implements QuoteService {
     }
 
 
-    //database
+    // database
     @Override
-    public List<Quote> findAllQuotes(){
+    public List<Quote> findAllQuotes() {
         return quoteRepository.findAll();
     }
+
+    // // 人手輸入，no need
+    // @Override // 在companyprofile找到id，set果間入去連價一齊save
+    // public Quote save(Long id, Quote quote) {
+    //     CompanyProfile companyProfile = companyProfileRepository.findById(id)
+    //             .orElseThrow(() -> new EntityNotFoundException(
+    //                     "Stock ID Not Found")); // why have to do this step??
+    //     quote.setCompanyProfile(companyProfile);
+    //     return quoteRepository.save(quote);
+    // }
 
 
 }

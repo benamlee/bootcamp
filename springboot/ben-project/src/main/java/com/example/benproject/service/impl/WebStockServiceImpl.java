@@ -24,12 +24,10 @@ public class WebStockServiceImpl implements WebStockService {
     @Autowired
     private FinnhubMapper finnhubMapper;
 
-    public CompanyProfileAndQuoteDTO getCompanyProfileAndQuoteDTO(String symbol)
-            throws FinnhubException {
-        CompanyProfile2DTO profile =
-                companyProfileService.getCompanyProfile(symbol);
+    public CompanyProfileAndQuoteDTO getCompanyProfileAndQuoteDTO(String symbol) throws FinnhubException {
+        CompanyProfile2DTO profile = companyProfileService.getCompanyProfile(symbol);
         QuoteDTO quote = quoteService.getQuote(symbol);
-        if (profile == null && quote == null)
+        if (profile == null && quote == null) 
             throw new FinnhubException(Code.THIRD_PARTY_SERVER_UNAVAILABLE);
         return finnhubMapper.map(profile, quote);
     }

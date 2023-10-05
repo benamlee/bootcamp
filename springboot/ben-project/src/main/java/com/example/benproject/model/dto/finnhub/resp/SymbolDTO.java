@@ -14,7 +14,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SymbolDTO {
+public class SymbolDTO { // JSON is array
 
     private String currency;
 
