@@ -1,4 +1,4 @@
-package com.example.demofinnhub.model.test2;
+package com.example.demofinnhub.model.graph;
 
 
 

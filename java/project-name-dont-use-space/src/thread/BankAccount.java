@@ -40,8 +40,8 @@ class BankAccount {
 
     }
 
-    public synchronized void transaction(BankAccount ac, double amount) { // combine withdraw and deposit
-        for (int i = 0; i < 15000; i++) {
+    public void transaction(BankAccount ac, double amount) { // combine withdraw and deposit
+        for (int i = 0; i < 50000; i++) {
             if (this.balance >= amount) {
                 this.balance -= amount;
                 System.out.println(Thread.currentThread().getName()

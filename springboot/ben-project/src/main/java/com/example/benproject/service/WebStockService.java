@@ -5,6 +5,8 @@ import com.example.benproject.model.dto.web.resp.CompanyProfileAndQuoteDTO;
 
 public interface WebStockService {
 
-    CompanyProfileAndQuoteDTO getCompanyProfileAndQuoteDTO(String symbol) throws FinnhubException;
+    // web service, no database
+    CompanyProfileAndQuoteDTO getCompanyProfileAndQuoteDTO(String symbol)
+            throws FinnhubException;
 
 }

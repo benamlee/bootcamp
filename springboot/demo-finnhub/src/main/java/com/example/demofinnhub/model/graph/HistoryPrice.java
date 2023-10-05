@@ -1,4 +1,4 @@
-package com.example.demofinnhub.model.test2;
+package com.example.demofinnhub.model.graph;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,10 +17,10 @@ public class HistoryPrice {
 
   private List<Price> prices; // this list has data
 
-  public List<Double> movingAvg(enum: DAY, int 50) {
-    int[]a = new int[]{1,2,3};
-    String s = "abc";
-    StringBuilder ss = new StringBuilder(s).reverse();
-    s= ss.toString();
-    }
+  // public List<Double> movingAvg(enum: DAY, int 50) {
+  //   int[]a = new int[]{1,2,3};
+  //   String s = "abc";
+  //   StringBuilder ss = new StringBuilder(s).reverse();
+  //   s= ss.toString();
+  //   }
 }

@@ -32,20 +32,20 @@ public class BankTransactionDemo {
         // Start the threads
         thread1.start();
         thread2.start();
-        thread3.start();
-        thread4.start();
-        thread5.start();
-        thread6.start();
+        // thread3.start();
+        // thread4.start();
+        // thread5.start();
+        // thread6.start();
         // 模擬有一堆transaction衝入去，同一時間做
         System.out.println(
                 "1=" + account1.getBalance() + ", 2=" + account2.getBalance());
         try {
             thread1.join();
             thread2.join();
-            thread3.join();
-            thread4.join();
-            thread5.join();
-            thread6.join(); // join means end
+        //     thread3.join();
+        //     thread4.join();
+        //     thread5.join();
+        //     thread6.join(); // join means end
             Thread.sleep(500); // wait 1.5s
             System.out.println("1=" + account1.getBalance() + ", 2="
                     + account2.getBalance());

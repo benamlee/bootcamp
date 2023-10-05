@@ -14,11 +14,23 @@ api:
 # redis-key:
 #     company-profile2: '???'
 
-# spring:
-#     datasource: 
-#         url: 'jdbc:postgresql://localhost:5432/postgres'
-#         username: 'postgres'
-#         password: 'aa19888888'
-#     jpa:
-#         show-sql: true
-#         hibernate.ddl-auto: update
+# postgresql
+spring:
+    datasource: 
+        driverClassName: org.hibernate.dialect.PostgreSQLDialect
+        url: 'jdbc:postgresql://localhost:5432/postgres'
+        username: 'postgres'
+        password: 'aa19888888'
+    jpa:
+        show-sql: true
+        hibernate.ddl-auto: update
+
+
+
+management.endpoints.web.base-path: /data
+management.endpoints.web.exposure.include: "*"
+management.endpoint.shutdown.enabled: true
+management.endpoints.web.exposure.exclude: beans
+# management.endpoints.web.exposure.include: beans,mappings
+
+management.endpoint.health.group.readiness.show-details: always

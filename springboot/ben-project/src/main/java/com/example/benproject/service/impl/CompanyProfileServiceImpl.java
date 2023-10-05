@@ -1,5 +1,6 @@
 package com.example.benproject.service.impl;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,17 +8,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+import com.example.benproject.entity.CompanyProfile;
 import com.example.benproject.exception.FinnhubException;
 import com.example.benproject.infra.Code;
 import com.example.benproject.infra.Protocol;
 import com.example.benproject.model.dto.finnhub.resp.CompanyProfile2DTO;
+import com.example.benproject.repository.CompanyProfileRepository;
 import com.example.benproject.service.CompanyProfileService;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 // @Slf4j // 可以用「 log.info("url = " + url); 」去print, 同System.out.print()一樣
 public class CompanyProfileServiceImpl implements CompanyProfileService {
 
+    // JSON -> java object
     @Autowired
     private RestTemplate restTemplate;
 
@@ -34,6 +37,13 @@ public class CompanyProfileServiceImpl implements CompanyProfileService {
     @Value(value = "${api.finnhub.endpoints.stock.profile2}")
     private String companyProfile2Endpoint;
 
+
+    // database
+    @Autowired
+    private CompanyProfileRepository companyProfileRepository;
+
+    
+    // get json , -> deserialization to java object
     @Override
     public CompanyProfile2DTO getCompanyProfile(String symbol)
             throws FinnhubException {
@@ -56,5 +66,12 @@ public class CompanyProfileServiceImpl implements CompanyProfileService {
         } catch (RestClientException e) {
             throw new FinnhubException(Code.FINNHUB_PROFILE2_NOTFOUND);
         }
+    }
+
+
+     // database methods
+    @Override
+    public List<CompanyProfile> findAllCompanyProfiles(){
+        return companyProfileRepository.findAll();
     }
 }
