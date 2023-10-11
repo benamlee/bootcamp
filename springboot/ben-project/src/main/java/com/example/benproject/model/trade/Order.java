@@ -4,10 +4,12 @@ import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@ToString
 public class Order implements Comparable<Order> {
     // show 出來的盤
 
@@ -24,10 +26,18 @@ public class Order implements Comparable<Order> {
     @Override
     public int compareTo(Order o) {
         // order by buysell, price, time
-        // bbbbbbssssss
-        // 
+        if (this.buySell == o.buySell) {
+            if (o.price != this.price) {
+                return o.price < this.price ? 1 : -1;
+            } else {
+                return o.time.isBefore(this.time) ? 1 : -1;
+            }
+        }
+        if (this.buySell == BuySell.BUY)
+            return -1;
+        return 1;
     }
 
-
+  
 
 }

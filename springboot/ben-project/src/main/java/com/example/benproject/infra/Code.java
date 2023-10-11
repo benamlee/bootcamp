@@ -9,6 +9,11 @@ public enum Code {
             "Finnhub Company Profile2 RestClientException."), //
     FINNHUB_QUOTE_NOTFOUND(40003, "Finnhub Stock Quote RestClientException."), //
     FINNHUB_SYMBOL_NOTFOUND(40004, "Finnhub Stock Symbol RestClientException."), //
+    
+    // Trader
+    TRADER_NOTENOUGH_MONEY(41001, "Trader has not enough money."),
+    TRADER_NOTENOUGH_PRODUCT(41002, "Trader has not enough product."),
+
     // Server
     SERVER_TIMEOUT(50000, "Server Timeout."), //
     THIRD_PARTY_SERVER_UNAVAILABLE(50001, "Third Party Service Unavailable."), //
