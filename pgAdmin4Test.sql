@@ -1,4 +1,3 @@
-select * from customers;
 drop table finnhub_stocks;
 create table finnhub_stocks (
 	id BIGSERIAL PRIMARY KEY,
@@ -24,3 +23,16 @@ create table finnhub_stock_prices (
 
 SELECT * FROM FINNHUB_STOCKS;
 SELECT * FROM FINNHUB_STOCK_PRICES;
+
+
+select * from finnhub_company_profile;
+
+select * from finnhub_stock_prices;
+
+select * from finnhub_stock_symbols;
+
+drop table finnhub_stock_prices;
+
+drop table finnhub_company_profile;
+
+drop table finnhub_stock_symbols;

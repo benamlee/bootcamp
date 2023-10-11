@@ -25,6 +25,21 @@ spring:
         show-sql: true
         hibernate.ddl-auto: update
 
+
+# h2
+# spring:
+#     datasource:
+#         driverClassName: 'org.h2.Driver'
+#         url: 'jdbc:h2:mem:testdb' # 要係網頁h2打url
+#         username: 'sa'
+#         password:
+#     jpa:
+#         show-sql: true
+#         hibernate.ddl-auto: create-drop
+#     h2.console.enabled: true
+
+
+
 # spring.profiles.active: enableScheduling
 
 

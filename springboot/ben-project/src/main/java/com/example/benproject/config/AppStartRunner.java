@@ -14,6 +14,7 @@ import com.example.benproject.model.dto.finnhub.resp.SymbolDTO;
 import com.example.benproject.model.mapper.FinnhubMapper;
 import com.example.benproject.repository.CompanyProfileRepository;
 import com.example.benproject.repository.QuoteRepository;
+import com.example.benproject.repository.StockSymbolRepository;
 import com.example.benproject.service.CompanyProfileService;
 import com.example.benproject.service.QuoteService;
 import com.example.benproject.service.StockSymbolService;
@@ -38,6 +39,9 @@ public class AppStartRunner implements CommandLineRunner {
     @Autowired
     private QuoteRepository quoteRepository;
 
+    @Autowired
+    private StockSymbolRepository stockSymbolRepository;
+
 
 
     // database save for these symbols
@@ -51,12 +55,11 @@ public class AppStartRunner implements CommandLineRunner {
         // get all symbols (US) from the API
         // save symbols into database
 
-        
 
         // call api to get all symbols
         List<SymbolDTO> symbolDTOs = stockSymbolService.getAllSymbols() // call api
                 .stream() //
-                .filter(symbol -> stockInventory.contains(symbol.getSymbol())) // boolean (only the static list of symbol will save)
+                .filter(symbol -> stockInventory.contains(symbol.getSymbol()) && !stockSymbolRepository.findAll().stream().map(s->s.getSymbol()).collect(Collectors.toList()).contains(symbol.getSymbol())) // boolean (only the static list of symbol will save)
                 .collect(Collectors.toList()); //
         System.out.println(
                 "All Symbols are inserted into finnhub_stock_symbol. No of Symbols=" + symbolDTOs.size());
@@ -92,6 +95,7 @@ public class AppStartRunner implements CommandLineRunner {
                 System.out.println("RestClientException: Symbol" + symbol.getSymbol());
             }
         });
+        
         System.out.println("Stocks in Inventory are inserted.");
         System.out.println("CommandLineRunner Completed.");
 
