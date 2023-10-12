@@ -36,3 +36,7 @@ drop table finnhub_stock_prices;
 drop table finnhub_company_profile;
 
 drop table finnhub_stock_symbols;
+
+select * from trade_record;
+
+drop table trade_record;

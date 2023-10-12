@@ -28,5 +28,6 @@ public class AAAAAAA {
 
         System.out.println(east.getDegree()); // 90
         System.out.println(east.getDirection()); // E
+        System.out.println(Direction.valueOf("east".toUpperCase()));
     }
 }

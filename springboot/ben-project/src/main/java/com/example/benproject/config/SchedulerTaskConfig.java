@@ -16,13 +16,13 @@ public class SchedulerTaskConfig {
     @Autowired
     private CompanyProfileService companyProfileService;
 
-    @Scheduled(fixedRate = 8000) // 60 sec
-    public void fixedRateTask() throws InterruptedException, FinnhubException {
-        if (start) { // after app start runner saved, start = true
-            companyProfileService.refresh();
-            System.out.println("insert new quote");
-        }
-    }
+    // @Scheduled(fixedRate = 8000) // 60 sec
+    // public void fixedRateTask() throws InterruptedException, FinnhubException {
+    //     if (start) { // after app start runner saved, start = true
+    //         companyProfileService.refresh();
+    //         System.out.println("insert new quote");
+    //     }
+    // }
 
 }
 

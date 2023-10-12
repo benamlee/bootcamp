@@ -5,15 +5,26 @@ import java.util.Collections;
 import java.util.HashMap;
 import com.example.benproject.exception.FinnhubException;
 import com.example.benproject.infra.Code;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 public class Trader {
+
+
 
     // Buyer Seller
     private long id;
 
-    private double money;
+    private double money = 100000000;
 
-    private HashMap<Product, Integer> products; //
+    public static Product demoProduct = new Product("ABC", new BidAsk());
+
+    private HashMap<Product, Integer> products = new HashMap<>(); //
+
+    {products.put(demoProduct, 1000);}
 
     // 可以做：在指定 BidAsk 做 new order 的 method
 
@@ -21,122 +32,124 @@ public class Trader {
 
     // 市價盤
 
-    public void marketOrder(Product product, BuySell buySell, int quantity)
-            throws FinnhubException {
-        // 未寫check錢
-        if (buySell == BuySell.BUY) {
-            for (int i = 0; i < product.getBidAsk().getOrders().size() || quantity > 0; i++) {
-                // 隊->第一個sell
-                if (product.getBidAsk().getOrders().get(i).getBuySell() == BuySell.SELL) {
-                    // 第一個就成交哂
-                    if (product.getBidAsk().getOrders().get(i).getQuantity() > quantity) {
-                        // 隊改quantity
-                        product.getBidAsk().getOrders().get(i).setQuantity(product.getBidAsk().getOrders().get(i).getQuantity() - quantity);
-                        // 倉加貨
-                        // 倉可能係null
-                        this.products.put(product, this.products.get(product) == null ? quantity : this.products.get(product) + quantity); 
-                        //  ?? tradeRecordRepository.save(new TradeRecord(,,));
-                        
-                        quantity = 0;
-                    } else {
-                        quantity -= product.getBidAsk().getOrders().get(i).getQuantity();
-                        // 倉加貨
-                        // 倉可能係null
-                        this.products.put(product, this.products.get(product) == null ? product.getBidAsk().getOrders().get(i).getQuantity() : this.products.get(product) + product.getBidAsk().getOrders().get(i).getQuantity()); 
-                        //  ?? tradeRecordRepository.save(new TradeRecord(,,));
+    public void marketOrder(Product product, BuySell buySell, int quantity) throws FinnhubException {
 
-                        // 隊remove一個盤，去下一個繼續成交
-                        product.getBidAsk().getOrders().remove(i);
-                        i--;
-                    }
+        if (buySell == BuySell.BUY) {
+            while (this.money >= product.getAsk().getPrice() * quantity && quantity > 0) {
+                // 隊->第一個sell
+                // 第一個就成交哂
+                if (product.getAsk().getQuantity() > quantity) {
+                    // 隊改quantity
+                    product.getAsk().setQuantity(product.getAsk().getQuantity() - quantity);
+                    // account 減錢
+                    if (this.money >= product.getAsk().getPrice() * quantity)
+                        this.money -= product.getAsk().getPrice() * quantity;
+                    else
+                        throw new FinnhubException(Code.TRADER_NOTENOUGH_MONEY);
+                    // 倉加貨
+                    // 倉可能係null
+                    this.products.put(product, this.products.get(product) == null ? quantity : this.products.get(product) + quantity); 
+                    // tradeRecordRepository.save(TradeRecord.builder().price(product.getAsk().getPrice()).quantity(quantity).build());
+                    quantity = 0;
+
+                } else {
+                    quantity -= product.getAsk().getQuantity();
+                    // 減錢
+                    if (this.money >= product.getAsk().getPrice() * quantity)
+                        this.money -= product.getAsk().getQuantity() * product.getAsk().getPrice();
+                    else
+                        throw new FinnhubException(Code.TRADER_NOTENOUGH_MONEY);
+                    // 倉加貨
+                    // 倉可能係null
+                    this.products.put(product, this.products.get(product) == null ? product.getAsk().getQuantity() : this.products.get(product) + product.getAsk().getQuantity()); 
+                    // tradeRecordRepository.save(TradeRecord.builder().price(product.getAsk().getPrice()).quantity(product.getAsk().getQuantity()).build());
+                    // 隊remove一個盤，去下一個繼續成交
+                    product.removeAsk();
                 }
             }
-
         }
 
         if (buySell == BuySell.SELL) {
-            if (this.products.get(product) < quantity) {
+            if (this.products.get(product) == null || this.products.get(product) < quantity) {
                 throw new FinnhubException(Code.TRADER_NOTENOUGH_PRODUCT);
             } else {
-                for(int i = 0; i < product.getBidAsk().getOrders().size() || quantity > 0; i++) {
-                    if (product.getBidAsk().getOrders().get(i).getBuySell() == BuySell.SELL) {
-                        if (product.getBidAsk().getOrders().get(i - 1).getQuantity() > quantity) {
-                            product.getBidAsk().getOrders().get(i - 1).setQuantity(product.getBidAsk().getOrders().get(i - 1).getQuantity() - quantity);
-                            // map一定有，唔洗check null
-                            this.products.put(product, this.products.get(product) - quantity); 
-                        } else {
-                            quantity -= product.getBidAsk().getOrders().get(i - 1).getQuantity();
-                            // map一定有，唔洗check null
-                            this.products.put(product, this.products.get(product) - product.getBidAsk().getOrders().get(i - 1).getQuantity());
-                            product.getBidAsk().getOrders().remove(i - 1);
-                            i--;
-                        }
+                while(quantity > 0) {
+                    if (product.getBid().getQuantity() > quantity) {
+                        product.getBid().setQuantity(product.getBid().getQuantity() - quantity);
+                        // map一定有，唔洗check null
+                        this.money += quantity * product.getBid().getPrice();
+                        this.products.put(product, this.products.get(product) - quantity);
+                        // tradeRecordRepository.save(TradeRecord.builder().price(product.getBid().getPrice()).quantity(quantity).build());
+                        quantity = 0;
+                    } else {
+                        quantity -= product.getBid().getQuantity();
+                        this.money += product.getBid().getQuantity() * product.getBid().getPrice();
+                        // map一定有，唔洗check null
+                        this.products.put(product, this.products.get(product) - product.getBid().getQuantity());
+                        // tradeRecordRepository.save(TradeRecord.builder().price(product.getBid().getPrice()).quantity(product.getBid().getQuantity()).build());
+                        product.removeBid();
                     }
                 }
             }
         }
-        // ?? tradeRecordRepository.save(new TradeRecord(,,));
         Collections.sort(product.getBidAsk().getOrders());
     }
 
     // 限價盤
-    public void limitOrder(Product product, BuySell buySell, double price,
-            int quantity) throws FinnhubException{
+    public void limitOrder(Product product, BuySell buySell, double price, int quantity) throws FinnhubException{
 
         // check if trader have sufficent product for sell or sufficient money for buy
         if (buySell == BuySell.BUY && this.money < price * quantity)
                 throw new FinnhubException(Code.TRADER_NOTENOUGH_MONEY);
-        if (buySell == BuySell.SELL && this.products.get(product) == null || this.products.get(product) < quantity)
+        if (buySell == BuySell.SELL && (this.products.get(product) == null || this.products.get(product) < quantity))
                 throw new FinnhubException(Code.TRADER_NOTENOUGH_PRODUCT);
 
-        // locate the idx of sell;
-        int idx = 0;
-        for (int i = 0; i < product.getBidAsk().getOrders().size();i++){
-            if (product.getBidAsk().getOrders().get(i).getBuySell() == BuySell.SELL){
-                idx = i;
-            }
-        }
- 
         if (buySell == BuySell.BUY) {
             // 太低價不成交
-            if (price < product.getBidAsk().getOrders().get(idx).getPrice()) {
+            if (price < product.getAsk().getPrice()) {
                 // 直接order排隊
-                product.getBidAsk().getOrders().add(new Order(this.id, buySell, price, quantity, LocalDateTime.now()));
+                product.getBidAsk().getOrders().add(new Order(1l, buySell, price, quantity, LocalDateTime.now()));
+                quantity = 0;
             } else {
                 // 有成交
                 // quantity 一邊成交一邊減 , 
-                while (quantity > 0 && product.getBidAsk().getOrders().get(idx).getPrice() < price) {
+                while (quantity > 0 && product.getAsk().getPrice() <= price) {
                     // 直接成交哂
-                    if (product.getBidAsk().getOrders().get(idx).getQuantity() > quantity) {
-                        product.getBidAsk().getOrders().get(idx).setQuantity(product.getBidAsk().getOrders().get(idx).getQuantity() - quantity);
+                    if (product.getAsk().getQuantity() > quantity) {
+                        product.getAsk().setQuantity(product.getAsk().getQuantity() - quantity);
+                        this.money -= product.getAsk().getPrice() * quantity;
                         this.products.put(product, this.products.get(product) == null ? quantity : this.products.get(product) + quantity);
-                        //  ?? tradeRecordRepository.save(new TradeRecord(,,));
+                        // tradeRecordRepository.save(TradeRecord.builder().price(product.getAsk().getPrice()).quantity(quantity).build());
                         quantity = 0;
                     } else {
-                        quantity -= product.getBidAsk().getOrders().get(idx).getQuantity();
-                        this.products.put(product, this.products.get(product) == null ? product.getBidAsk().getOrders().get(idx).getQuantity() : this.products.get(product) + product.getBidAsk().getOrders().get(idx).getQuantity());
-                        //  ?? tradeRecordRepository.save(new TradeRecord(,,));
-                        product.getBidAsk().getOrders().remove(idx);
+                        quantity -= product.getAsk().getQuantity();
+                        this.money -= product.getAsk().getPrice() * quantity;
+                        this.products.put(product, this.products.get(product) == null ? product.getAsk().getQuantity() : this.products.get(product) + product.getAsk().getQuantity());
+                        // tradeRecordRepository.save(TradeRecord.builder().price(product.getAsk().getPrice()).quantity(product.getAsk().getQuantity()).build());
+                        product.removeAsk();
                     }
                 }
             }
         }
 
         if (buySell == BuySell.SELL) {
-            if (price > product.getBidAsk().getOrders().get(idx - 1).getPrice()) {
+            if (price > product.getBid().getPrice()) {
                 product.getBidAsk().getOrders().add(new Order(this.id, buySell, price, quantity, LocalDateTime.now()));
+                quantity = 0;
             } else {
-                while (quantity > 0 && product.getBidAsk().getOrders().get(idx - 1).getPrice() > price) {
-                    if (product.getBidAsk().getOrders().get(idx - 1).getQuantity() > quantity) {
-                        product.getBidAsk().getOrders().get(idx - 1).setQuantity(product.getBidAsk().getOrders().get(idx - 1).getQuantity() - quantity);
+                while (quantity > 0 && product.getBid().getPrice() >= price) {
+                    if (product.getBid().getQuantity() > quantity) {
+                        product.getBid().setQuantity(product.getBid().getQuantity() - quantity);
+                        this.money += quantity * product.getBid().getPrice();
                         this.products.put(product, this.products.get(product) == null ? quantity : this.products.get(product) + quantity);
-                        //  ?? tradeRecordRepository.save(new TradeRecord(,,));
+                        // tradeRecordRepository.save(TradeRecord.builder().price(product.getBid().getPrice()).quantity(quantity).build());
                         quantity = 0;
                     } else {
-                        quantity -= product.getBidAsk().getOrders().get(idx - 1).getQuantity();
-                        this.products.put(product, this.products.get(product) == null ? product.getBidAsk().getOrders().get(idx - 1).getQuantity() : this.products.get(product) + product.getBidAsk().getOrders().get(idx - 1).getQuantity());
-                        //  ?? tradeRecordRepository.save(new TradeRecord(,,));
-                        product.getBidAsk().getOrders().remove(idx - 1);
+                        quantity -= product.getBid().getQuantity();
+                        this.money += product.getBid().getQuantity() * product.getBid().getPrice();
+                        this.products.put(product, this.products.get(product) == null ? product.getBid().getQuantity() : this.products.get(product) + product.getBid().getQuantity());
+                        // tradeRecordRepository.save(TradeRecord.builder().price(product.getBid().getPrice()).quantity(product.getBid().getQuantity()).build());
+                        product.removeBid();
                     }
                 }
             }

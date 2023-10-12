@@ -13,6 +13,7 @@ public interface WebOperation {
 
     @GetMapping(value = "/stock")
     @ResponseStatus(value = HttpStatus.OK)
+    // RequestParam format -> .../stock?symbol=AAPL
     ApiResponse<CompanyProfileAndQuoteDTO> getCompanyProfileAndQuoteDTO(
             @RequestParam("symbol") String symbol) throws FinnhubException;
 

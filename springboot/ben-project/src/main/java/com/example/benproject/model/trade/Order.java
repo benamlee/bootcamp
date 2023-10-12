@@ -29,7 +29,9 @@ public class Order implements Comparable<Order> {
         if (this.buySell == o.buySell) {
             if (o.price != this.price) {
                 return o.price < this.price ? 1 : -1;
-            } else {
+            } else if (this.buySell == BuySell.BUY) {
+                return o.time.isBefore(this.time) ? -1 : 1;
+            } else if (this.buySell == BuySell.SELL) {
                 return o.time.isBefore(this.time) ? 1 : -1;
             }
         }
@@ -38,6 +40,6 @@ public class Order implements Comparable<Order> {
         return 1;
     }
 
-  
+
 
 }
