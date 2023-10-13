@@ -20,6 +20,9 @@ public class TradeServiceImpl implements TradeService {
     @Autowired
     private TradeRecordRepository tradeRecordRepository;
 
+    @Autowired
+    private Trader trader;
+
     @Override
     public List<Order> findOrders() {
         return Trader.demoProduct.getBidAsk().getOrders();
@@ -30,8 +33,8 @@ public class TradeServiceImpl implements TradeService {
     public void marketOrder(String stockName, String buySell, Integer quantity)
             throws FinnhubException {
         // Hard code
-        Trader trader = new Trader();
-        if (BuySell.valueOf(buySell) == BuySell.BUY) {
+        // Trader trader = new Trader(); // 有bean
+        if (BuySell.valueOf(buySell.toUpperCase()) == BuySell.BUY) {
             while (trader.getMoney() >= Trader.demoProduct.getAsk().getPrice() * quantity && quantity > 0) {
                 // 隊->第一個sell
                 // 第一個就成交哂
@@ -65,7 +68,7 @@ public class TradeServiceImpl implements TradeService {
                 }
             }
         }
-        if (BuySell.valueOf(buySell) == BuySell.SELL) {
+        if (BuySell.valueOf(buySell.toUpperCase()) == BuySell.SELL) {
             if (trader.getProducts().get(Trader.demoProduct) == null || trader.getProducts().get(Trader.demoProduct) < quantity) {
                 throw new FinnhubException(Code.TRADER_NOTENOUGH_PRODUCT);
             } else {
@@ -96,17 +99,17 @@ public class TradeServiceImpl implements TradeService {
     public void limitOrder(String stockName, String buySell, Double price,
             Integer quantity) throws FinnhubException {
 
-        Trader trader = new Trader();
-        if (BuySell.valueOf(buySell) == BuySell.BUY && trader.getMoney() < price * quantity)
+        // Trader trader = new Trader(); // 有bean
+        if (BuySell.valueOf(buySell.toUpperCase()) == BuySell.BUY && trader.getMoney() < price * quantity)
                 throw new FinnhubException(Code.TRADER_NOTENOUGH_MONEY);
-        if (BuySell.valueOf(buySell) == BuySell.SELL && (trader.getProducts().get(Trader.demoProduct) == null || trader.getProducts().get(Trader.demoProduct) < quantity))
+        if (BuySell.valueOf(buySell.toUpperCase()) == BuySell.SELL && (trader.getProducts().get(Trader.demoProduct) == null || trader.getProducts().get(Trader.demoProduct) < quantity))
                 throw new FinnhubException(Code.TRADER_NOTENOUGH_PRODUCT);
 
-        if (BuySell.valueOf(buySell) == BuySell.BUY) {
+        if (BuySell.valueOf(buySell.toUpperCase()) == BuySell.BUY) {
             // 太低價不成交
             if (price < Trader.demoProduct.getAsk().getPrice()) {
                 // 直接order排隊
-                Trader.demoProduct.getBidAsk().getOrders().add(new Order(trader.getId(), BuySell.valueOf(buySell), price, quantity, LocalDateTime.now()));
+                Trader.demoProduct.getBidAsk().getOrders().add(new Order(trader.getId(), BuySell.valueOf(buySell.toUpperCase()), price, quantity, LocalDateTime.now()));
                 quantity = 0;
             } else {
                 // 有成交
@@ -130,9 +133,9 @@ public class TradeServiceImpl implements TradeService {
             }
         }
 
-        if (BuySell.valueOf(buySell) == BuySell.SELL) {
+        if (BuySell.valueOf(buySell.toUpperCase()) == BuySell.SELL) {
             if (price > Trader.demoProduct.getBid().getPrice()) {
-                Trader.demoProduct.getBidAsk().getOrders().add(new Order(trader.getId(), BuySell.valueOf(buySell), price, quantity, LocalDateTime.now()));
+                Trader.demoProduct.getBidAsk().getOrders().add(new Order(trader.getId(), BuySell.valueOf(buySell.toUpperCase()), price, quantity, LocalDateTime.now()));
                 quantity = 0;
             } else {
                 while (quantity > 0 && Trader.demoProduct.getBid().getPrice() >= price) {
@@ -153,7 +156,7 @@ public class TradeServiceImpl implements TradeService {
             }
         }
         if (quantity > 0)
-            Trader.demoProduct.getBidAsk().getOrders().add(new Order(trader.getId(), BuySell.valueOf(buySell), price, quantity, LocalDateTime.now()));
+            Trader.demoProduct.getBidAsk().getOrders().add(new Order(trader.getId(), BuySell.valueOf(buySell.toUpperCase()), price, quantity, LocalDateTime.now()));
         Collections.sort(Trader.demoProduct.getBidAsk().getOrders());
     }
 

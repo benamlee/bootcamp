@@ -1,5 +1,7 @@
 package com.example.benproject.model.trade;
 
+import com.example.benproject.exception.FinnhubException;
+import com.example.benproject.infra.Code;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +17,8 @@ public class Product {
 
     private BidAsk bidAsk;
 
-    public Order getAsk() {
-        int idx = 0;
+    public Order getAsk() throws FinnhubException {
+        int idx = -1;
         for (int i = 0; i < this.getBidAsk().getOrders().size(); i++) {
             if (this.getBidAsk().getOrders().get(i)
                     .getBuySell() == BuySell.SELL) {
@@ -24,11 +26,13 @@ public class Product {
                 break;
             }
         }
+        if (idx == -1)
+            throw new FinnhubException(Code.MARKET_NOTENOUGH_PRODUCT);
         return this.getBidAsk().getOrders().get(idx);
     }
 
-    public Order getBid() {
-        int idx = 0;
+    public Order getBid() throws FinnhubException {
+        int idx = -1;
         for (int i = 0; i < this.getBidAsk().getOrders().size(); i++) {
             if (this.getBidAsk().getOrders().get(i)
                     .getBuySell() == BuySell.SELL) {
@@ -36,11 +40,13 @@ public class Product {
                 break;
             }
         }
+        if (idx == -1)
+            throw new FinnhubException(Code.MARKET_NOTENOUGH_PRODUCT);
         return this.getBidAsk().getOrders().get(idx - 1);
     }
 
-    public void removeAsk() {
-        int idx = 0;
+    public void removeAsk() throws FinnhubException {
+        int idx = -1;
         for (int i = 0; i < this.getBidAsk().getOrders().size(); i++) {
             if (this.getBidAsk().getOrders().get(i)
                     .getBuySell() == BuySell.SELL) {
@@ -48,11 +54,13 @@ public class Product {
                 break;
             }
         }
+        if (idx == -1)
+            throw new FinnhubException(Code.MARKET_NOTENOUGH_PRODUCT);
         this.getBidAsk().getOrders().remove(idx);
     }
 
-    public void removeBid() {
-        int idx = 0;
+    public void removeBid() throws FinnhubException {
+        int idx = -1;
         for (int i = 0; i < this.getBidAsk().getOrders().size(); i++) {
             if (this.getBidAsk().getOrders().get(i)
                     .getBuySell() == BuySell.SELL) {
@@ -60,6 +68,8 @@ public class Product {
                 break;
             }
         }
+        if (idx == -1)
+            throw new FinnhubException(Code.MARKET_NOTENOUGH_PRODUCT);
         this.getBidAsk().getOrders().remove(idx - 1);
     }
 

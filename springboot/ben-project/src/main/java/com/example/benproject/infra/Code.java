@@ -11,8 +11,9 @@ public enum Code {
     FINNHUB_SYMBOL_NOTFOUND(40004, "Finnhub Stock Symbol RestClientException."), //
     
     // Trader
-    TRADER_NOTENOUGH_MONEY(41001, "Trader has not enough money."),
-    TRADER_NOTENOUGH_PRODUCT(41002, "Trader has not enough product."),
+    TRADER_NOTENOUGH_MONEY(41001, "Trader has not enough money."), //
+    TRADER_NOTENOUGH_PRODUCT(41002, "Trader has not enough product."), //
+    MARKET_NOTENOUGH_PRODUCT(41003, "Market has not enough product."), //s
 
     // Server
     SERVER_TIMEOUT(50000, "Server Timeout."), //
