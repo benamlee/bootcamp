@@ -33,15 +33,15 @@ public class BidAsk {
 
 
     {
-        orders.add(new Order(0, BuySell.BUY, 46, 100, LocalDateTime.now()));
-        orders.add(new Order(0, BuySell.BUY, 47, 100, LocalDateTime.now()));
-        orders.add(new Order(0, BuySell.BUY, 48, 100, LocalDateTime.now()));
-        orders.add(new Order(0, BuySell.BUY, 49, 100, LocalDateTime.now()));
-        orders.add(new Order(0, BuySell.BUY, 50, 100, LocalDateTime.now()));
-        orders.add(new Order(0, BuySell.SELL, 51, 100, LocalDateTime.now()));
-        orders.add(new Order(0, BuySell.SELL, 52, 100, LocalDateTime.now()));
-        orders.add(new Order(0, BuySell.SELL, 53, 100, LocalDateTime.now()));
-        orders.add(new Order(0, BuySell.SELL, 54, 100, LocalDateTime.now()));
-        orders.add(new Order(0, BuySell.SELL, 55, 100, LocalDateTime.now()));
+        orders.add(new Order(0, BuySell.BUY, 49.8, 200, LocalDateTime.now()));
+        orders.add(new Order(0, BuySell.BUY, 49.85, 300, LocalDateTime.now()));
+        orders.add(new Order(0, BuySell.BUY, 49.90, 250, LocalDateTime.now()));
+        orders.add(new Order(0, BuySell.BUY, 49.95, 400, LocalDateTime.now()));
+        orders.add(new Order(0, BuySell.BUY, 50, 600, LocalDateTime.now()));
+        orders.add(new Order(0, BuySell.SELL, 50.05, 1000, LocalDateTime.now()));
+        orders.add(new Order(0, BuySell.SELL, 50.10, 90, LocalDateTime.now()));
+        orders.add(new Order(0, BuySell.SELL, 50.15, 200, LocalDateTime.now()));
+        orders.add(new Order(0, BuySell.SELL, 50.20, 160, LocalDateTime.now()));
+        orders.add(new Order(0, BuySell.SELL, 50.25, 100, LocalDateTime.now()));
     }
 }

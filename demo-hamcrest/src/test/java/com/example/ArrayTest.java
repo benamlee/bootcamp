@@ -1,3 +1,5 @@
+package com.example;
+
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 import org.junit.jupiter.api.Test;

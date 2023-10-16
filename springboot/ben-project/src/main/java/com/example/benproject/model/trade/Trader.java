@@ -18,7 +18,7 @@ public class Trader {
     // Buyer Seller
     private long id;
 
-    private double money = 100000000;
+    private double money = 10000;
 
     public static Product demoProduct = new Product("ABC", new BidAsk());
 
@@ -141,13 +141,13 @@ public class Trader {
     //                 if (product.getBid().getQuantity() > quantity) {
     //                     product.getBid().setQuantity(product.getBid().getQuantity() - quantity);
     //                     this.money += quantity * product.getBid().getPrice();
-    //                     this.products.put(product, this.products.get(product) == null ? quantity : this.products.get(product) + quantity);
+    //                     this.products.put(product, this.products.get(product) - quantity);
     //                     // tradeRecordRepository.save(TradeRecord.builder().price(product.getBid().getPrice()).quantity(quantity).build());
     //                     quantity = 0;
     //                 } else {
     //                     quantity -= product.getBid().getQuantity();
     //                     this.money += product.getBid().getQuantity() * product.getBid().getPrice();
-    //                     this.products.put(product, this.products.get(product) == null ? product.getBid().getQuantity() : this.products.get(product) + product.getBid().getQuantity());
+    //                     this.products.put(product, this.products.get(product) - product.getBid().getQuantity());
     //                     // tradeRecordRepository.save(TradeRecord.builder().price(product.getBid().getPrice()).quantity(product.getBid().getQuantity()).build());
     //                     product.removeBid();
     //                 }

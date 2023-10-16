@@ -26,7 +26,7 @@ public class Product {
                 break;
             }
         }
-        if (idx == -1)
+        if (idx == -1 || idx == 0)
             throw new FinnhubException(Code.MARKET_NOTENOUGH_PRODUCT);
         return this.getBidAsk().getOrders().get(idx);
     }
@@ -40,7 +40,7 @@ public class Product {
                 break;
             }
         }
-        if (idx == -1)
+        if (idx == -1 || idx == 0)
             throw new FinnhubException(Code.MARKET_NOTENOUGH_PRODUCT);
         return this.getBidAsk().getOrders().get(idx - 1);
     }
@@ -54,7 +54,7 @@ public class Product {
                 break;
             }
         }
-        if (idx == -1)
+        if (idx == -1 || idx == 0)
             throw new FinnhubException(Code.MARKET_NOTENOUGH_PRODUCT);
         this.getBidAsk().getOrders().remove(idx);
     }
@@ -68,7 +68,7 @@ public class Product {
                 break;
             }
         }
-        if (idx == -1)
+        if (idx == -1 || idx == 0)
             throw new FinnhubException(Code.MARKET_NOTENOUGH_PRODUCT);
         this.getBidAsk().getOrders().remove(idx - 1);
     }

@@ -142,21 +142,26 @@ public class TradeServiceImpl implements TradeService {
                     if (Trader.demoProduct.getBid().getQuantity() > quantity) {
                         Trader.demoProduct.getBid().setQuantity(Trader.demoProduct.getBid().getQuantity() - quantity);
                         trader.setMoney(trader.getMoney() + quantity * Trader.demoProduct.getBid().getPrice());
-                        trader.getProducts().put(Trader.demoProduct, trader.getProducts().get(Trader.demoProduct) == null ? quantity : trader.getProducts().get(Trader.demoProduct) + quantity);
+                        trader.getProducts().put(Trader.demoProduct, trader.getProducts().get(Trader.demoProduct) - quantity);
                         tradeRecordRepository.save(TradeRecord.builder().price(Trader.demoProduct.getBid().getPrice()).quantity(quantity).localDateTime(LocalDateTime.now()).build());
                         quantity = 0;
                     } else {
                         quantity -= Trader.demoProduct.getBid().getQuantity();
                         trader.setMoney(trader.getMoney() + Trader.demoProduct.getBid().getQuantity() * Trader.demoProduct.getBid().getPrice());
-                        trader.getProducts().put(Trader.demoProduct, trader.getProducts().get(Trader.demoProduct) == null ? Trader.demoProduct.getBid().getQuantity() : trader.getProducts().get(Trader.demoProduct) + Trader.demoProduct.getBid().getQuantity());
+                        trader.getProducts().put(Trader.demoProduct, trader.getProducts().get(Trader.demoProduct) - Trader.demoProduct.getBid().getQuantity());
                         tradeRecordRepository.save(TradeRecord.builder().price(Trader.demoProduct.getBid().getPrice()).quantity(Trader.demoProduct.getBid().getQuantity()).localDateTime(LocalDateTime.now()).build());
                         Trader.demoProduct.removeBid();
                     }
                 }
             }
         }
-        if (quantity > 0)
+        if (quantity > 0) {
             Trader.demoProduct.getBidAsk().getOrders().add(new Order(trader.getId(), BuySell.valueOf(buySell.toUpperCase()), price, quantity, LocalDateTime.now()));
+            // if (BuySell.valueOf(buySell.toUpperCase()) == BuySell.SELL) {
+            //     // 放出去的盤要係倉減
+            //     trader.getProducts().put(Trader.demoProduct, trader.getProducts().get(Trader.demoProduct) - quantity);
+            // }
+        }
         Collections.sort(Trader.demoProduct.getBidAsk().getOrders());
     }
 

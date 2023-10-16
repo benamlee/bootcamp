@@ -26,7 +26,7 @@ public class SpyTest {
         verify(calculator, Mockito.times(1)).substract(3, 4);
     }
 
-    @Test
+    @Test // 唔寫when，其他method唔會mock走
     void testAdd2() {
         int result = checkout.add(3, 4);
         assertEquals(3, result); // 4+(4-3-2)
