@@ -10,7 +10,7 @@ import com.example.demotest.service.StudentService;
 @SpringBootTest
 public class StudentServiceTest {
 
-    @Spy
+    @Spy // Similar to @Autowired, but some of its method can be mocked
     private StudentService studentService;
 
     @Test

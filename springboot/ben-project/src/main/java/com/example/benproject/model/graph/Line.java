@@ -1,20 +1,20 @@
 package com.example.benproject.model.graph;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Deque;
 import java.util.List;
-import java.util.function.IntFunction;
+import lombok.Getter;
 
+@Getter
 public class Line {
 
-    private String symbol;
-
     private Interval interval;
+    
+    private String symbol;
 
     private List<Point> closePoints;
 
     // 用filter?? last day of week/ month
+
 
 
     public List<Point> movingAverage(int noOfInterval) {

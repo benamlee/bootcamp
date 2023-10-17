@@ -1,1 +1,10 @@
 server.port: 8083
+spring.datasource: # database
+    driverClassName: 'org.h2.Driver'
+    url: 'jdbc:h2:mem:jpademo'
+    username: 'sa'
+    password: 
+spring:
+    h2:
+        console:
+            enabled: true

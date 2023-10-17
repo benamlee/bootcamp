@@ -1,5 +1,8 @@
 package com.example.demotest.model;
 
+import lombok.Builder;
+
+@Builder
 public class Student {
 
     private String name;

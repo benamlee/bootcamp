@@ -18,7 +18,7 @@ public class Trader {
     // Buyer Seller
     private long id;
 
-    private double money = 10000;
+    private double money = 200000;
 
     public static Product demoProduct = new Product("ABC", new BidAsk());
 

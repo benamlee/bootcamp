@@ -110,6 +110,7 @@ public class TradeServiceImpl implements TradeService {
             if (price < Trader.demoProduct.getAsk().getPrice()) {
                 // 直接order排隊
                 Trader.demoProduct.getBidAsk().getOrders().add(new Order(trader.getId(), BuySell.valueOf(buySell.toUpperCase()), price, quantity, LocalDateTime.now()));
+                trader.setMoney(trader.getMoney() - price * quantity);
                 quantity = 0;
             } else {
                 // 有成交
@@ -136,6 +137,7 @@ public class TradeServiceImpl implements TradeService {
         if (BuySell.valueOf(buySell.toUpperCase()) == BuySell.SELL) {
             if (price > Trader.demoProduct.getBid().getPrice()) {
                 Trader.demoProduct.getBidAsk().getOrders().add(new Order(trader.getId(), BuySell.valueOf(buySell.toUpperCase()), price, quantity, LocalDateTime.now()));
+                trader.getProducts().put(Trader.demoProduct, trader.getProducts().get(Trader.demoProduct) - quantity);
                 quantity = 0;
             } else {
                 while (quantity > 0 && Trader.demoProduct.getBid().getPrice() >= price) {
@@ -157,10 +159,10 @@ public class TradeServiceImpl implements TradeService {
         }
         if (quantity > 0) {
             Trader.demoProduct.getBidAsk().getOrders().add(new Order(trader.getId(), BuySell.valueOf(buySell.toUpperCase()), price, quantity, LocalDateTime.now()));
-            // if (BuySell.valueOf(buySell.toUpperCase()) == BuySell.SELL) {
-            //     // 放出去的盤要係倉減
-            //     trader.getProducts().put(Trader.demoProduct, trader.getProducts().get(Trader.demoProduct) - quantity);
-            // }
+            if (BuySell.valueOf(buySell.toUpperCase()) == BuySell.SELL) {
+                // 放出去的盤要係倉減
+                trader.getProducts().put(Trader.demoProduct, trader.getProducts().get(Trader.demoProduct) - quantity);
+            }
         }
         Collections.sort(Trader.demoProduct.getBidAsk().getOrders());
     }
