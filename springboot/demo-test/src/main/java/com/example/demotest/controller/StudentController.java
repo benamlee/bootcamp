@@ -15,7 +15,6 @@ import com.example.demotest.service.StudentService;
 @RequestMapping("/v1")
 public class StudentController {
 
-
     @Autowired
     private StudentService studentService;
 
@@ -29,4 +28,8 @@ public class StudentController {
         return studentService.findAll();
     }
 
+    @GetMapping("/jmeter")
+    public String getJmeterCount() {
+        return studentService.jmeterTest();
+    }
 }

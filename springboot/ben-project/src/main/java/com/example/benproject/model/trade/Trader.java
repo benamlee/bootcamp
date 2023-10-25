@@ -1,10 +1,6 @@
 package com.example.benproject.model.trade;
 
-import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.HashMap;
-import com.example.benproject.exception.FinnhubException;
-import com.example.benproject.infra.Code;
 import lombok.Getter;
 import lombok.Setter;
 

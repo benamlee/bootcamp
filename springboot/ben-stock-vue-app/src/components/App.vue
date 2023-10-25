@@ -14,9 +14,12 @@
             <el-table-column label="Sell (Ask)" prop="price" align="center"></el-table-column>
             <el-table-column label="Shares" prop="share" align="center"></el-table-column>
           </el-table>
-        </div> 
+        </div>
       </div>
-      
+
+    <!-- <div><klineChart/></div> -->
+    <!-- div, import, components return -->
+
       <div class="trade-record">
         <el-table :data="tradeRecords">
           <el-table-column label="Time" prop="time" align="center"></el-table-column>
@@ -24,7 +27,9 @@
           <el-table-column label="Quantity" prop="quantity" align="center"></el-table-column>
         </el-table>
       </div>
-     
+
+
+
       <div class="order-form">
         <el-form :model="form">
           <!-- Action -->
@@ -111,7 +116,6 @@ body::before {
   justify-content: space-between;
   border-radius: 10px;
   border-style: groove;
-
 }
 
 .order-book-tables {
@@ -122,17 +126,27 @@ body::before {
 }
 
 .order-book-buy {
+  /* display: flex;
+  align-items: top;
+  justify-content: center; */
   width: 47%;
 }
 
 .order-book-sell {
+  /* display: flex;
+  align-items: top;
+  justify-content: center; */
   width: 47%;
 }
 
 .trade-record {
+  /* display: flex;
+  align-items: baseline;
+  justify-content: center; */
   width: 30%;
   height: 560px;
   overflow: auto;
+
 }
 
 /* Styling for the order form and panel */
@@ -311,8 +325,15 @@ import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
 // import { onMounted } from '@vue/composition-api';
 
+// import klineChart from './model/klineChart.vue';
+
 export default {
   name: 'App',
+
+  // components: {
+  //   klineChart,
+  // },
+
   setup() {
     const form = ref({
       share_input: 100,
@@ -372,7 +393,7 @@ export default {
 
     const refreshInterval = setInterval(() => {
       fetchDataFromApi();
-    }, 1000);
+    }, 10000);
 
     // Buy Sell Option
     const buySellSelectedOption = ref(null);
@@ -442,7 +463,8 @@ export default {
       buyOrders, sellOrders, tradeRecords,
       buySellSelectedOption, buySellOptions, buySellSelectOption,
       orderTypeSelectedOption, orderTypeOptions, orderTypeSelectOption,
-      placeOrder
+      placeOrder,
+      // klineChart,
     };
   },
 };

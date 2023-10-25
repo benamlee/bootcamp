@@ -1,5 +1,4 @@
-import java.util.Deque;
-import java.util.LinkedList;
+package tryabstractinterface;
 
 public class CF{
   public static void main(String[] args) {

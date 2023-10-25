@@ -4,7 +4,7 @@ public class Square extends Shape {
 
     public Square(int length) {
         super();
-        this.length=length;
+        this.length = length;
     }
 
     @Override
@@ -12,8 +12,8 @@ public class Square extends Shape {
         return this.length * this.length; // int * int -> int -> double
     }
 
-    public double divide(){
-        return (double) this.length /3*2; // default 跟variable ((double) this.length)
+    public double divide() {
+        return (double) this.length / 3 * 2; // default 跟variable ((double) this.length)
     }
 
     public static void main(String[] args) {

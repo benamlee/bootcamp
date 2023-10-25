@@ -1,0 +1,90 @@
+
+.container {
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+    padding: 10px;
+    height: 1000px;
+    max-width: 1500px;
+    border: 1px solid#aaa;
+    border-radius: 5px;
+  }
+  
+  .left-session {
+    background-color: lightcoral;
+    margin: 30px;
+    height: 100%;
+    width: 50%;
+    border: 1px solid#aaa;
+    border-radius: 5px;
+  }
+  .left-top {
+    background-color:cadetblue;
+    display: flex;
+    align-items: top;
+    justify-content:space-between;
+    margin: 30px;
+    height:30%;
+    width: 90%;
+    border: 1px solid#aaa;
+    border-radius: 5px;
+  }
+  .box-1 {
+    background-color: blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin: auto;
+    height:90%;
+    width: 45%;
+    border: 1px solid#aaa;
+    border-radius: 5px;
+  }
+  .box-2 {
+    background-color:blue;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin: auto;
+    height:90%;
+    width: 45%;
+    border: 1px solid#aaa;
+    border-radius: 5px;
+  }
+  
+  .left-bottom {
+    background-color:brown;
+    display: flex;
+    align-items: bottom;
+    justify-content:center;
+    margin: 30px;
+    height: 60%;
+    width: 90%;
+    border: 1px solid#aaa;
+    border-radius: 5px;
+  }
+  
+  .middle-session {
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    height: 100%;
+    width: 25%;
+    border: 1px solid#aaa;
+    border-radius: 5px;
+  }
+  .right-session {
+    background-color: chartreuse;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    height: 100%;
+    width: 25%;
+    border: 1px solid#aaa;
+    border-radius: 5px;
+  }

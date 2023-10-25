@@ -1,5 +1,6 @@
 public abstract class Shape {
 
+    private String x;
 
     public abstract double area();
 

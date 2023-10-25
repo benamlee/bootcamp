@@ -1,0 +1,25 @@
+# docker-compose.yml
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: admin1234
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+  demo-junit-test:
+    image: demo-junit-test:0.0.2
+    build:
+      context: ./demo-junit-test
+      dockerfile: Dockerfile
+    ports:
+      - 8183:8083
+  demo-jmeter-test:
+    image: demo-jmeter-test:0.0.2
+    build:
+      context: ./demo-jmeter-test
+      dockerfile: Dockerfile
+    ports:
+      - 8184:8084

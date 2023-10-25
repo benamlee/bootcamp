@@ -60,8 +60,4 @@ public class StudentTest {
         assertEquals(20, result);
     }
 
-    @Test
-    void testGetStudentName(){
-
-    }
 }

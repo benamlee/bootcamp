@@ -1,7 +1,5 @@
 package tryabstractinterface;
 
-import java.util.Currency;
-
 public class AA extends BB {
   // public class AA extends BB { // now BB class 繼承了 CC
 
